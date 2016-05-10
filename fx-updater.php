@@ -162,7 +162,7 @@ function fx_updater_plugin_activation_notice(){
 	$transient = get_transient( 'fx_updater_activation_notice' );
 	if( $transient ){
 		?>
-		<div class="updated info is-dismissible">
+		<div class="notice notice-info is-dismissible">
 			<p><?php _e( 'Thank you for using our plugin :)', 'fx-updater' ); ?></p>
 		</div>
 		<?php
