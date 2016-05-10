@@ -1,12 +1,23 @@
-.fx-upmb-fields{
+.fx-upmb-fields:after{
+	content:".";display:block;height:0;clear:both;visibility:hidden;
 }
 .fx-upmb-field{
 	padding-bottom: 10px;
 	margin-bottom: 10x;
 	border-bottom: 1px solid #eee;
 }
+.fx-upmb-field:after{
+	content:".";display:block;height:0;clear:both;visibility:hidden;
+}
 .fx-upmb-field:last-child{
 	border-bottom: none;
+}
+.fx-upmb-field-label{
+	width: 250px;
+	float: left;
+}
+.fx-upmb-field-content{
+	float: left;
 }
 
 /* === UPDATER DATA === */
@@ -52,4 +63,16 @@
 	max-width: 100%;
 }
 
+
+/* Media Queries */
+@media screen and ( max-width: 1200px ) {
+	.fx-upmb-field-label{
+		width: 100%;
+		float: none;
+	}
+	.fx-upmb-field-content{
+		width: 100%;
+		float: none;
+	}
+}
 

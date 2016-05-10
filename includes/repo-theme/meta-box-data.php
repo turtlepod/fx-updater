@@ -52,57 +52,72 @@ function fx_updater_theme_data_meta_box( $post ){
 	<div class="fx-upmb-fields">
 
 		<div class="fx-upmb-field fx-upmb-slug">
-			<p>
-				<label for="repo_slug"><?php _ex( 'Theme Slug', 'themes', 'fx-updater' ); ?></label>
-			</p>
-			<p>
-				<input name="post_name" type="text" id="repo_slug" value="<?php echo esc_attr( $editable_slug ); ?>" />
-			</p>
-			<p class="description">
-				<?php _ex( 'Use this as <code>$repo_slug</code> in updater config.', 'themes', 'fx-updater' ); ?>
-			</p>
+			<div class="fx-upmb-field-label">
+				<p>
+					<label for="repo_slug"><?php _ex( 'Theme Slug', 'themes', 'fx-updater' ); ?></label>
+				</p>
+			</div><!-- .fx-upmb-field-label -->
+			<div class="fx-upmb-field-content">
+				<p>
+					<input name="post_name" type="text" id="repo_slug" value="<?php echo esc_attr( $editable_slug ); ?>" />
+				</p>
+				<p class="description">
+					<?php _ex( 'Use this as <code>$repo_slug</code> in updater config.', 'themes', 'fx-updater' ); ?>
+				</p>
+			</div><!-- .fx-upmb-field-content -->
 		</div><!-- .fx-upmb-field.fx-upmb-slug -->
 
 		<div class="fx-upmb-field fx-upmb-home-url">
-			<p>
-				<label for="repo_uri"><?php _ex( 'Repository URL', 'themes', 'fx-updater' ); ?></label>
-			</p>
-			<p>
-				<input type="text" autocomplete="off" id="repo_uri" value="<?php echo esc_url( trailingslashit( home_url() ) ); ?>" readonly="readonly"/>
-			</p>
-			<p class="description">
-				<?php _ex( 'Use this as <code>$repo_uri</code> in updater config. This is your site home URL.', 'themes', 'fx-updater' ); ?>
-			</p>
+			<div class="fx-upmb-field-label">
+				<p>
+					<label for="repo_uri"><?php _ex( 'Repository URL', 'themes', 'fx-updater' ); ?></label>
+				</p>
+			</div><!-- .fx-upmb-field-label -->
+			<div class="fx-upmb-field-content">
+				<p>
+					<input type="text" autocomplete="off" id="repo_uri" value="<?php echo esc_url( trailingslashit( home_url() ) ); ?>" readonly="readonly"/>
+				</p>
+				<p class="description">
+					<?php _ex( 'Use this as <code>$repo_uri</code> in updater config. This is your site home URL.', 'themes', 'fx-updater' ); ?>
+				</p>
+			</div><!-- .fx-upmb-field-content -->
 		</div><!-- .fx-upmb-field.fx-upmb-home-url -->
 
 		<div class="fx-upmb-field fx-upmb-upload">
-			<p>
-				<label for="fxu_download_link"><?php _e( 'Theme ZIP', 'fx-updater' ); ?></label>
-			</p>
+			<div class="fx-upmb-field-label">
+				<p>
+					<label for="fxu_download_link"><?php _e( 'Theme ZIP', 'fx-updater' ); ?></label>
+				</p>
+			</div><!-- .fx-upmb-field-label -->
+			<div class="fx-upmb-field-content">
+				<p >
+					<input id="fxu_download_link" class="fx-upmb-upload-url" autocomplete="off" placeholder="http://" name="download_link" type="url" value="<?php echo esc_url( $download_link ); ?>">
+				</p>
 
-			<p >
-				<input id="fxu_download_link" class="fx-upmb-upload-url" autocomplete="off" placeholder="http://" name="download_link" type="url" value="<?php echo esc_url( $download_link ); ?>">
-			</p>
-
-			<p>
-				<a href="#" class="button button-primary upload-zip"><?php _e( 'Upload', 'fx-updater' ); ?></a> 
-				<a href="#" class="button remove-zip disabled"><?php _e( 'Remove', 'fx-updater' ); ?></a>
-			</p>
-			<p class="description">
-				<?php _ex( 'Input URL to theme ZIP file or upload it.', 'themes', 'fx-updater' ); ?>
-			</p>
+				<p>
+					<a href="#" class="button button-primary upload-zip"><?php _e( 'Upload', 'fx-updater' ); ?></a> 
+					<a href="#" class="button remove-zip disabled"><?php _e( 'Remove', 'fx-updater' ); ?></a>
+				</p>
+				<p class="description">
+					<?php _ex( 'Input URL to theme ZIP file or upload it.', 'themes', 'fx-updater' ); ?>
+				</p>
+			</div><!-- .fx-upmb-field-content -->
 		</div><!-- .fx-upmb-field.fx-upmb-upload -->
 
 		<div class="fx-upmb-field fx-upmb-version">
-			<p>
-				<label for="fxu_version"><?php _e( 'Version', 'fx-updater' ); ?></label>
-			</p>
-			<p>
-				<input id="fxu_version" autocomplete="off" name="version" placeholder="e.g 1.0.0" type="text" value="<?php echo fx_updater_sanitize_version( $version ); ?>"> 
-			</p>
-			<p class="description">
-				<?php _ex( 'Latest theme version.', 'themes', 'fx-updater' ); ?>
-			</p>
+			<div class="fx-upmb-field-label">
+				<p>
+					<label for="fxu_version"><?php _e( 'Version', 'fx-updater' ); ?></label>
+				</p>
+			</div><!-- .fx-upmb-field-label -->
+			<div class="fx-upmb-field-content">
+				<p>
+					<input id="fxu_version" autocomplete="off" name="version" placeholder="e.g 1.0.0" type="text" value="<?php echo fx_updater_sanitize_version( $version ); ?>"> 
+				</p>
+				<p class="description">
+					<?php _ex( 'Latest theme version.', 'themes', 'fx-updater' ); ?>
+				</p>
+			</div><!-- .fx-upmb-field-content -->
 		</div><!-- .fx-upmb-field.fx-upmb-version-->
 
 	</div><!-- .fx-upmb-form -->
