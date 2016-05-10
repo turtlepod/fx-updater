@@ -1,0 +1,55 @@
+.fx-upmb-fields{
+}
+.fx-upmb-field{
+	padding-bottom: 10px;
+	margin-bottom: 10x;
+	border-bottom: 1px solid #eee;
+}
+.fx-upmb-field:last-child{
+	border-bottom: none;
+}
+
+/* === UPDATER DATA === */
+
+/* Upload */
+.fx-upmb-upload label{
+	font-size: 16px;
+	font-weight: 600;
+}
+#fxu_download_link{
+	width: 400px;
+	max-width: 100%;
+}
+/* Version */
+.fx-upmb-version label{
+	font-size: 16px;
+	font-weight: 600;
+}
+#fxu_version{
+	width: 100px;
+	max-width: 100%;
+}
+
+
+/* === UPDATER CONFIG === */
+
+/* Slug */
+.fx-upmb-slug label{
+	font-size: 16px;
+	font-weight: 600;
+}
+#repo_slug{
+	width: 250px;
+	max-width: 100%;
+}
+/* Home URL */
+.fx-upmb-home-url label{
+	font-size: 16px;
+	font-weight: 600;
+}
+#repo_uri{
+	width: 250px;
+	max-width: 100%;
+}
+
+
