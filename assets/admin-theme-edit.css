@@ -20,28 +20,6 @@
 	float: left;
 }
 
-/* === UPDATER DATA === */
-
-/* Upload */
-.fx-upmb-upload label{
-	font-size: 16px;
-	font-weight: 600;
-}
-#fxu_download_link{
-	width: 400px;
-	max-width: 100%;
-}
-/* Version */
-.fx-upmb-version label{
-	font-size: 16px;
-	font-weight: 600;
-}
-#fxu_version{
-	width: 100px;
-	max-width: 100%;
-}
-
-
 /* === UPDATER CONFIG === */
 
 /* Slug */
@@ -62,6 +40,34 @@
 	width: 250px;
 	max-width: 100%;
 }
+
+/* === UPDATER DATA === */
+
+/* Upload */
+.fx-upmb-upload label{
+	font-size: 16px;
+	font-weight: 600;
+}
+#fxu_download_link{
+	width: 400px;
+	max-width: 100%;
+}
+/* Version */
+.fx-upmb-version label{
+	font-size: 16px;
+	font-weight: 600;
+}
+#fxu_version{
+	width: 80px;
+	max-width: 100%;
+}
+.fx-upmb-version .fx-upmb-desc{
+	color: #666;
+	display: inline-block;
+	font-style: italic;
+	font-size: 13px;
+}
+
 
 
 /* Media Queries */

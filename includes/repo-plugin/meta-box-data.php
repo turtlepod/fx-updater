@@ -5,22 +5,22 @@
 **/
 
 /* Add meta boxes on the 'add_meta_boxes' hook. */
-add_action( 'add_meta_boxes', 'fx_updater_theme_data_add_meta_boxes' );
+add_action( 'add_meta_boxes', 'fx_updater_plugin_data_add_meta_boxes' );
 
 /**
  * Register Updater Config Meta Box
  * @since 1.0.0
  */
-function fx_updater_theme_data_add_meta_boxes(){
+function fx_updater_plugin_data_add_meta_boxes(){
 
 	/* Add Meta Box */
 	add_meta_box(
-		'fx-updater-theme-data',                        // ID
-		_x( 'Theme Data', 'themes', 'fx-updater' ),     // Title 
-		'fx_updater_theme_data_meta_box',               // Callback
-		array( 'theme_repo' ),                          // post type
-		'normal',                                       // Context
-		'default'                                       // Priority
+		'fx-updater-plugin-data',                        // ID
+		_x( 'Plugin Data', 'plugins', 'fx-updater' ),     // Title 
+		'fx_updater_plugin_data_meta_box',               // Callback
+		array( 'plugin_repo' ),                          // post type
+		'normal',                                        // Context
+		'default'                                        // Priority
 	);
 
 	/* Remove WP Core Slug Meta Box */
@@ -35,7 +35,7 @@ function fx_updater_theme_data_add_meta_boxes(){
  * @see post_slug_meta_box() "wp-admin/includes/meta-boxes.php"
  * @since 1.0.0
  */
-function fx_updater_theme_data_meta_box( $post ){
+function fx_updater_plugin_data_meta_box( $post ){
 	global $hook_suffix, $wp_version;
 	$post_id = $post->ID;
 
@@ -54,7 +54,7 @@ function fx_updater_theme_data_meta_box( $post ){
 		<div class="fx-upmb-field fx-upmb-slug">
 			<div class="fx-upmb-field-label">
 				<p>
-					<label for="repo_slug"><?php _ex( 'Theme Slug', 'themes', 'fx-updater' ); ?></label>
+					<label for="repo_slug"><?php _ex( 'Plugin Slug', 'plugins', 'fx-updater' ); ?></label>
 				</p>
 			</div><!-- .fx-upmb-field-label -->
 			<div class="fx-upmb-field-content">
@@ -62,7 +62,7 @@ function fx_updater_theme_data_meta_box( $post ){
 					<input name="post_name" type="text" id="repo_slug" value="<?php echo esc_attr( $editable_slug ); ?>" />
 				</p>
 				<p class="description">
-					<?php _ex( 'Use this as <code>$repo_slug</code> in updater config.', 'themes', 'fx-updater' ); ?>
+					<?php _ex( 'Use this as <code>$repo_slug</code> in updater config.', 'plugins', 'fx-updater' ); ?>
 				</p>
 			</div><!-- .fx-upmb-field-content -->
 		</div><!-- .fx-upmb-field.fx-upmb-slug -->
@@ -70,7 +70,7 @@ function fx_updater_theme_data_meta_box( $post ){
 		<div class="fx-upmb-field fx-upmb-home-url">
 			<div class="fx-upmb-field-label">
 				<p>
-					<label for="repo_uri"><?php _ex( 'Repository URL', 'themes', 'fx-updater' ); ?></label>
+					<label for="repo_uri"><?php _ex( 'Repository URL', 'plugins', 'fx-updater' ); ?></label>
 				</p>
 			</div><!-- .fx-upmb-field-label -->
 			<div class="fx-upmb-field-content">
@@ -78,7 +78,7 @@ function fx_updater_theme_data_meta_box( $post ){
 					<input type="text" autocomplete="off" id="repo_uri" value="<?php echo esc_url( trailingslashit( home_url() ) ); ?>" readonly="readonly"/>
 				</p>
 				<p class="description">
-					<?php _ex( 'Use this as <code>$repo_uri</code> in updater config. This is your site home URL.', 'themes', 'fx-updater' ); ?>
+					<?php _ex( 'Use this as <code>$repo_uri</code> in updater config. This is your site home URL.', 'plugins', 'fx-updater' ); ?>
 				</p>
 			</div><!-- .fx-upmb-field-content -->
 		</div><!-- .fx-upmb-field.fx-upmb-home-url -->
@@ -86,7 +86,7 @@ function fx_updater_theme_data_meta_box( $post ){
 		<div class="fx-upmb-field fx-upmb-upload">
 			<div class="fx-upmb-field-label">
 				<p>
-					<label for="fxu_download_link"><?php _ex( 'Theme ZIP', 'themes', 'fx-updater' ); ?></label>
+					<label for="fxu_download_link"><?php _ex( 'Plugin ZIP', 'plugins', 'fx-updater' ); ?></label>
 				</p>
 			</div><!-- .fx-upmb-field-label -->
 			<div class="fx-upmb-field-content">
@@ -95,11 +95,11 @@ function fx_updater_theme_data_meta_box( $post ){
 				</p>
 
 				<p>
-					<a href="#" class="button button-primary upload-zip"><?php _ex( 'Upload', 'themes', 'fx-updater' ); ?></a> 
-					<a href="#" class="button remove-zip disabled"><?php _ex( 'Remove', 'themes', 'fx-updater' ); ?></a>
+					<a href="#" class="button button-primary upload-zip"><?php _ex( 'Upload', 'plugins', 'fx-updater' ); ?></a> 
+					<a href="#" class="button remove-zip disabled"><?php _ex( 'Remove', 'plugins', 'fx-updater' ); ?></a>
 				</p>
 				<p class="description">
-					<?php _ex( 'Input theme ZIP URL or upload it.', 'themes', 'fx-updater' ); ?>
+					<?php _ex( 'Input theme ZIP URL or upload it.', 'plugins', 'fx-updater' ); ?>
 				</p>
 			</div><!-- .fx-upmb-field-content -->
 		</div><!-- .fx-upmb-field.fx-upmb-upload -->
@@ -107,13 +107,13 @@ function fx_updater_theme_data_meta_box( $post ){
 		<div class="fx-upmb-field fx-upmb-version">
 			<div class="fx-upmb-field-label">
 				<p>
-					<label for="fxu_version"><?php _ex( 'Version', 'themes', 'fx-updater' ); ?></label>
+					<label for="fxu_version"><?php _ex( 'Version', 'plugins', 'fx-updater' ); ?></label>
 				</p>
 			</div><!-- .fx-upmb-field-label -->
 			<div class="fx-upmb-field-content">
 				<p>
 					<input id="fxu_version" autocomplete="off" name="version" placeholder="e.g 1.0.0" type="text" value="<?php echo fx_updater_sanitize_version( $version ); ?>"> 
-					<span class="fx-upmb-desc"><?php _ex( 'Latest theme version.', 'themes', 'fx-updater' ); ?></span>
+					<span class="fx-upmb-desc"><?php _ex( 'Latest theme version.', 'plugins', 'fx-updater' ); ?></span>
 				</p>
 			</div><!-- .fx-upmb-field-content -->
 		</div><!-- .fx-upmb-field.fx-upmb-version-->
@@ -121,24 +121,24 @@ function fx_updater_theme_data_meta_box( $post ){
 	</div><!-- .fx-upmb-form -->
 
 	<?php
-	wp_nonce_field( "fx_updater_nonce7894", "fx_updater_theme_data" );
+	wp_nonce_field( "fx_updater_nonce1248", "fx_updater_plugin_data" );
 }
 
 
 /* Save post meta on the 'save_post' hook. */
-add_action( 'save_post', 'fx_updater_theme_data_meta_box_save_post', 10, 2 );
+add_action( 'save_post', 'fx_updater_plugin_data_meta_box_save_post', 10, 2 );
 
 /**
  * Save Theme Data
  * @since 1.0.0
  */
-function fx_updater_theme_data_meta_box_save_post( $post_id, $post ){
+function fx_updater_plugin_data_meta_box_save_post( $post_id, $post ){
 
 	/* Stripslashes Submitted Data */
 	$request = stripslashes_deep( $_POST );
 
 	/* Verify nonce */
-	if ( ! isset( $request['fx_updater_theme_data'] ) || ! wp_verify_nonce( $request['fx_updater_theme_data'], 'fx_updater_nonce7894' ) ){
+	if ( ! isset( $request['fx_updater_plugin_data'] ) || ! wp_verify_nonce( $request['fx_updater_plugin_data'], 'fx_updater_nonce1248' ) ){
 		return $post_id;
 	}
 	/* Do not save on autosave */
@@ -147,7 +147,7 @@ function fx_updater_theme_data_meta_box_save_post( $post_id, $post ){
 	}
 	/* Check post type and user caps. */
 	$post_type = get_post_type_object( $post->post_type );
-	if ( 'theme_repo' != $post->post_type || !current_user_can( $post_type->cap->edit_post, $post_id ) ){
+	if ( 'plugin_repo' != $post->post_type || !current_user_can( $post_type->cap->edit_post, $post_id ) ){
 		return $post_id;
 	}
 
