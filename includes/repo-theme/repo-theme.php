@@ -17,4 +17,3 @@ if( is_admin() ){
 	/* Updater Config */
 	require_once( $path . 'meta-box-data.php' );
 }
-

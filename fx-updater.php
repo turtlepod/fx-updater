@@ -40,11 +40,17 @@ require_once( FX_UPDATER_PATH . 'includes/functions.php' );
 /* Load Settings Functions  */
 require_once( FX_UPDATER_PATH . 'includes/settings.php' );
 
+/* Load Query Functions */
+require_once( FX_UPDATER_PATH . 'includes/query.php' );
+
 /* Load Plugin Repo Functions  */
 require_once( FX_UPDATER_PATH . 'includes/repo-plugin/repo-plugin.php' );
 
 /* Load Theme Repo Functions */
 require_once( FX_UPDATER_PATH . 'includes/repo-theme/repo-theme.php' );
+
+/* Load Markdown Parser */
+require_once( FX_UPDATER_PATH . 'includes/library/markdown.php' );
 
 
 /* Plugins Loaded
