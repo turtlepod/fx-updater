@@ -18,6 +18,7 @@
 }
 .fx-upmb-field-content{
 	float: left;
+	max-width: 100%;
 }
 
 /* === UPDATER CONFIG === */

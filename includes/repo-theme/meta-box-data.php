@@ -62,7 +62,7 @@ function fx_updater_theme_data_meta_box( $post ){
 					<input name="post_name" type="text" id="repo_slug" value="<?php echo esc_attr( $editable_slug ); ?>" />
 				</p>
 				<p class="description">
-					<?php _ex( 'Use this as <code>$repo_slug</code> in updater config.', 'themes', 'fx-updater' ); ?>
+					<?php _ex( 'Use this as $repo_slug in updater config.', 'themes', 'fx-updater' ); ?>
 				</p>
 			</div><!-- .fx-upmb-field-content -->
 		</div><!-- .fx-upmb-field.fx-upmb-slug -->
@@ -78,7 +78,7 @@ function fx_updater_theme_data_meta_box( $post ){
 					<input type="text" autocomplete="off" id="repo_uri" value="<?php echo esc_url( trailingslashit( home_url() ) ); ?>" readonly="readonly"/>
 				</p>
 				<p class="description">
-					<?php _ex( 'Use this as <code>$repo_uri</code> in updater config. This is your site home URL.', 'themes', 'fx-updater' ); ?>
+					<?php _ex( 'Use this as $repo_uri in updater config. This is your site home URL.', 'themes', 'fx-updater' ); ?>
 				</p>
 			</div><!-- .fx-upmb-field-content -->
 		</div><!-- .fx-upmb-field.fx-upmb-home-url -->
@@ -153,7 +153,7 @@ function fx_updater_theme_data_meta_box_save_post( $post_id, $post ){
 
 	/* == ZIP FILE == */
 
-	/* Get (old) saved page builder data */
+	/* Get (old) saved data */
 	$old_data = get_post_meta( $post_id, 'download_link', true );
 
 	/* Get new submitted data and sanitize it. */
@@ -174,7 +174,7 @@ function fx_updater_theme_data_meta_box_save_post( $post_id, $post ){
 
 	/* == VERSION == */
 
-	/* Get (old) saved page builder data */
+	/* Get (old) saved data */
 	$old_data = get_post_meta( $post_id, 'version', true );
 
 	/* Get new submitted data and sanitize it. */

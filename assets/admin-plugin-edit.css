@@ -18,6 +18,7 @@
 }
 .fx-upmb-field-content{
 	float: left;
+	max-width: 100%;
 }
 
 /* === UPDATER CONFIG === */
@@ -68,9 +69,66 @@
 	font-size: 13px;
 }
 
+/* === PLUGIN DATA === */
+
+/* Release Date/Last Updated */
+.fx-upmb-last-updated label{
+	font-size: 16px;
+	font-weight: 600;
+}
+	/* Month */
+	.fx-upmb-month{
+		width: 80px;
+		padding: 1px 1px 1px 1px;
+	}
+	/* Day */
+	.fx-upmb-day{
+		position: relative;
+		top: 2px;
+		padding: 3px 6px 4px 6px;
+	}
+	/* Year */
+	.fx-upmb-year{
+		position: relative;
+		top: 2px;
+		padding: 3px 6px 4px 6px;
+	}
+
+/* WP Version */
+.fx-upmb-wp-version label{
+	font-size: 16px;
+	font-weight: 600;
+}
+#wp_requires,
+#wp_tested{
+	width: 80px;
+	max-width: 100%;
+}
+.fx-upmb-wp-version .fx-upmb-desc{
+	color: #666;
+	display: inline-block;
+	font-style: italic;
+	font-size: 13px;
+}
+
+/* Changelog */
+.fx-upmb-changelog label{
+	font-size: 16px;
+	font-weight: 600;
+}
+#fxu_changelog{
+	width: 400px;
+	max-width: 100%;
+}
+.fx-upmb-changelog-area{
+	font-size: 13px;
+	line-height: 1.5;
+	margin: 1em 0;
+}
 
 
-/* Media Queries */
+/* === Media Queries === */
+
 @media screen and ( max-width: 1200px ) {
 	.fx-upmb-field-label{
 		width: 100%;
