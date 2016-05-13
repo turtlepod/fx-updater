@@ -15,11 +15,11 @@ function fx_updater_create_settings_page(){
 	
 	/* Add Menu Page */
 	add_menu_page(
-		_x( 'f(x) Updater', 'settings', 'fx-updater' ),     // page title
+		_x( 'Updater', 'settings', 'fx-updater' ),          // page title
 		_x( 'f(x) Updater', 'settings', 'fx-updater' ),     // menu title
 		'manage_fx_updaters',                               // capability
 		'fx_updater',                                       // menu slug
-		'fx_updater_settings_page',                         // callback function
+		'fx_updater_updater_page',                         // callback function
 		'dashicons-update',                                 // dashicon
 		100                                                 // position
 	);
@@ -27,8 +27,8 @@ function fx_updater_create_settings_page(){
 	/* Add Submenu Page: Settings */
 	add_submenu_page(
 		'fx_updater',                                       // parent slug
-		_x( 'f(x) Updater', 'settings', 'fx-updater' ),     // page title
-		_x( 'Download', 'settings', 'fx-updater' ),         // menu title
+		_x( 'Updater', 'settings', 'fx-updater' ),          // page title
+		_x( 'Updater', 'settings', 'fx-updater' ),          // menu title
 		'manage_fx_updaters',                               // capability
 		'fx_updater'                                        // menu slug
 	);
@@ -39,7 +39,7 @@ function fx_updater_create_settings_page(){
 /**
  * Menu Page Callback Function
  */
-function fx_updater_settings_page(){
+function fx_updater_updater_page(){
 ?>
 	<div class="wrap">
 
