@@ -29,7 +29,7 @@ function fx_updater_theme_register_post_type() {
 	$theme_args = array(
 		'description'           => '',
 		'public'                => false,
-		'publicly_queryable'    => true,
+		'publicly_queryable'    => false,
 		'show_in_nav_menus'     => false,
 		'show_in_admin_bar'     => false,
 		'exclude_from_search'   => true,
@@ -41,7 +41,7 @@ function fx_updater_theme_register_post_type() {
 		'delete_with_user'      => false,
 		'hierarchical'          => false,
 		'has_archive'           => false, 
-		'query_var'             => true,
+		'query_var'             => false,
 		'rewrite'               => false,
 		'capability_type'       => 'theme_repo',
 		'map_meta_cap'          => true,
