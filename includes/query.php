@@ -41,6 +41,11 @@ function fx_updater_template_include( $template ){
 		$template = FX_UPDATER_PATH . 'templates/plugin-data.php';
 	}
 
+	/* Checking group data "?fx_updater=group" */
+	elseif( 'group' == $fx_updater ){
+		$template = FX_UPDATER_PATH . 'templates/group-data.php';
+	}
+
 	return $template;
 }
 
@@ -48,10 +53,10 @@ function fx_updater_template_include( $template ){
  * Theme Data Query
  * @since 1.0.0
  */
-function fx_updater_theme_data( $request ){
+function fx_updater_theme_data(){
 
 	/* Stripslash all */
-	$request = stripslashes_deep( $request );
+	$request = stripslashes_deep( $_REQUEST );
 
 	/* Data */
 	$data = array();
@@ -78,19 +83,13 @@ function fx_updater_theme_data( $request ){
 	$posts = get_posts( $args );
 	$post_id = $posts[0]->ID;
 
-	/* Theme Name */
-	$data['name'] = get_the_title( $post_id );
-
-	/* Theme Name */
-	$data['slug'] = $slug;
-
 	/* New Version */
-	$data['version'] = get_post_meta( $post_id, 'version', true );
+	$data['new_version'] = get_post_meta( $post_id, 'version', true );
 
 	/* Zip File Package */
 	$data['package'] = get_post_meta( $post_id, 'download_link', true );
 
-	return $data;
+	return apply_filters( 'fx_updater_theme_data', $data, $request );
 }
 
 
