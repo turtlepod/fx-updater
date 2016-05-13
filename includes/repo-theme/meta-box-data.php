@@ -75,7 +75,7 @@ function fx_updater_theme_data_meta_box( $post ){
 			</div><!-- .fx-upmb-field-label -->
 			<div class="fx-upmb-field-content">
 				<p>
-					<input type="text" autocomplete="off" id="repo_uri" value="<?php echo esc_url( trailingslashit( home_url() ) ); ?>" readonly="readonly"/>
+					<input type="text" autocomplete="off" id="repo_uri" value="<?php echo esc_url( set_url_scheme( trailingslashit( home_url() ), 'http' ) ); ?>" readonly="readonly"/>
 				</p>
 				<p class="description">
 					<?php _ex( 'Use this as $repo_uri in updater config. This is your site home URL.', 'themes', 'fx-updater' ); ?>
@@ -91,7 +91,7 @@ function fx_updater_theme_data_meta_box( $post ){
 			</div><!-- .fx-upmb-field-label -->
 			<div class="fx-upmb-field-content">
 				<p >
-					<input id="fxu_download_link" class="fx-upmb-upload-url" autocomplete="off" placeholder="http://" name="download_link" type="url" value="<?php echo esc_url( $download_link ); ?>">
+					<input id="fxu_download_link" class="fx-upmb-upload-url" autocomplete="off" placeholder="http://" name="download_link" type="url" value="<?php echo esc_url_raw( $download_link ); ?>">
 				</p>
 
 				<p>
@@ -157,7 +157,7 @@ function fx_updater_theme_data_meta_box_save_post( $post_id, $post ){
 	$old_data = get_post_meta( $post_id, 'download_link', true );
 
 	/* Get new submitted data and sanitize it. */
-	$new_data = isset( $request['download_link'] ) ? esc_url( $request['download_link'] ) : '';
+	$new_data = isset( $request['download_link'] ) ? esc_url_raw( $request['download_link'] ) : '';
 
 	/* New data submitted, No previous data, create it  */
 	if ( $new_data && '' == $old_data ){
