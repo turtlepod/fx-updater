@@ -66,14 +66,11 @@ function fx_updater_theme_data(){
 		return apply_filters( 'fx_updater_theme_data', array(), $request );
 	}
 
-	/* == Query theme based on ID (slug) == */
-
-	/* Slug */
-	$slug = sanitize_title( $request['id'] );
+	/* == Query Theme == */
 
 	/* Query Args */
 	$args = array(
-		'name'                => $slug,
+		'name'                => sanitize_title( $request['id'] ),
 		'post_type'           => 'theme_repo',
 		'post_status'         => 'publish',
 		'posts_per_page'      => 1,
@@ -81,13 +78,18 @@ function fx_updater_theme_data(){
 
 	/* Get Posts Data */
 	$posts = get_posts( $args );
+	if( ! isset( $posts[0] ) ){
+		return apply_filters( 'fx_updater_theme_data', array(), $request );
+	}
+
+	/* Post ID */
 	$post_id = $posts[0]->ID;
 
 	/* New Version */
-	$data['new_version'] = get_post_meta( $post_id, 'version', true );
+	$data['version'] = get_post_meta( $post_id, 'version', true );
 
 	/* Zip File Package */
-	$data['package'] = get_post_meta( $post_id, 'download_link', true );
+	$data['download_link'] = get_post_meta( $post_id, 'download_link', true );
 
 	return apply_filters( 'fx_updater_theme_data', $data, $request );
 }
@@ -97,9 +99,62 @@ function fx_updater_theme_data(){
  * Plugin Data Query
  * @since 1.0.0
  */
-function fx_updater_plugin_data( $request ){
+function fx_updater_plugin_data(){
+
+	/* Stripslash all */
+	$request = stripslashes_deep( $_REQUEST );
+
+	/* Data */
 	$data = array();
-	return $data;
+
+	/* Plugin Slug Not Set, bail */
+	if( !isset( $request['id'] ) ){
+		return apply_filters( 'fx_updater_plugin_data', array(), $request );
+	}
+
+	/* == Query Plugin == */
+
+	/* Slug */
+	$slug = sanitize_title( $request['id'] );
+
+	/* Query Args */
+	$args = array(
+		'name'                => $slug,
+		'post_type'           => 'plugin_repo',
+		'post_status'         => 'publish',
+		'posts_per_page'      => 1,
+	);
+
+	/* Get Posts Data */
+	$posts = get_posts( $args );
+	if( ! isset( $posts[0] ) ){
+		return apply_filters( 'fx_updater_plugin_data', array(), $request );
+	}
+
+	/* Post ID */
+	$post_id = $posts[0]->ID;
+
+	/* New Version */
+	$data['version'] = get_post_meta( $post_id, 'version', true );
+
+	/* Zip File Package */
+	$data['download_link'] = get_post_meta( $post_id, 'download_link', true );
+
+	/* WP Tested */
+	$data['tested'] = get_post_meta( $post_id, 'tested', true );
+
+	/* WP Requires */
+	$data['requires'] = get_post_meta( $post_id, 'requires', true );
+
+	/* Last Updated */
+	$data['last_updated'] = get_post_meta( $post_id, 'last_updated', true );
+
+	/* Last Updated */
+	$data['sections'] = array(
+		'changelog' => get_post_meta( $post_id, 'section_changelog', true ),
+	);
+
+	return apply_filters( 'fx_updater_plugin_data', $data, $request );
 }
 
 
