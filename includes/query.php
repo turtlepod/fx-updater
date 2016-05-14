@@ -85,11 +85,17 @@ function fx_updater_theme_data(){
 	/* Post ID */
 	$post_id = $posts[0]->ID;
 
-	/* New Version */
-	$data['version'] = get_post_meta( $post_id, 'version', true );
+	/* Version */
+	$version = get_post_meta( $post_id, 'version', true );
 
-	/* Zip File Package */
-	$data['download_link'] = get_post_meta( $post_id, 'download_link', true );
+	/* Version data available */
+	if( $version ){
+
+		$data = array(
+			'version'       => fx_updater_sanitize_version( $version ),
+			'download_link' => esc_url_raw( get_post_meta( $post_id, 'download_link', true ) ),
+		);
+	}
 
 	return apply_filters( 'fx_updater_theme_data', $data, $request );
 }
@@ -114,12 +120,9 @@ function fx_updater_plugin_data(){
 
 	/* == Query Plugin == */
 
-	/* Slug */
-	$slug = sanitize_title( $request['id'] );
-
 	/* Query Args */
 	$args = array(
-		'name'                => $slug,
+		'name'                => sanitize_title( $request['id'] ),
 		'post_type'           => 'plugin_repo',
 		'post_status'         => 'publish',
 		'posts_per_page'      => 1,
@@ -134,45 +137,105 @@ function fx_updater_plugin_data(){
 	/* Post ID */
 	$post_id = $posts[0]->ID;
 
-	/* New Version */
-	$data['version'] = get_post_meta( $post_id, 'version', true );
+	/* Version */
+	$version = get_post_meta( $post_id, 'version', true );
 
-	/* Zip File Package */
-	$data['download_link'] = get_post_meta( $post_id, 'download_link', true );
+	/* Version data available */
+	if( $version ){
 
-	/* WP Tested */
-	$data['tested'] = get_post_meta( $post_id, 'tested', true );
-
-	/* WP Requires */
-	$data['requires'] = get_post_meta( $post_id, 'requires', true );
-
-	/* Last Updated */
-	$data['last_updated'] = get_post_meta( $post_id, 'last_updated', true );
-
-	/* Last Updated */
-	$data['sections'] = array(
-		'changelog' => get_post_meta( $post_id, 'section_changelog', true ),
-	);
+		$data = array(
+			'version'       => fx_updater_sanitize_version( $version ),
+			'download_link' => esc_url_raw( get_post_meta( $post_id, 'download_link', true ) ),
+			'tested'        => fx_updater_sanitize_version( get_post_meta( $post_id, 'tested', true ) ),
+			'requires'      => fx_updater_sanitize_version( get_post_meta( $post_id, 'requires', true ) ),
+			'last_updated'  => sanitize_title_with_dashes( get_post_meta( $post_id, 'last_updated', true ) ),
+			'sections'      => array(
+				'changelog' => fx_updater_sanitize_plugin_section( get_post_meta( $post_id, 'section_changelog', true ) ),
+			),
+		);
+	}
 
 	return apply_filters( 'fx_updater_plugin_data', $data, $request );
 }
 
 
 
+/**
+ * Group Data Query
+ * @since 1.0.0
+ */
+function fx_updater_group_data(){
 
+	/* Stripslash all */
+	$request = stripslashes_deep( $_REQUEST );
 
+	/* Data */
+	$data = array();
 
+	/* Plugin Slug Not Set, bail */
+	if( !isset( $request['id'] ) ){
+		return apply_filters( 'fx_updater_group_data', array(), $request );
+	}
 
+	/* == Query Plugin == */
 
+	/* Query Args */
+	$args = array(
+		'post_type'           => array( 'theme_repo', 'plugin_repo' ),
+		'post_status'         => 'publish',
+		'posts_per_page'      => -1,
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'group_repo',
+				'field'    => 'slug',
+				'terms'    => sanitize_title( $request['id'] ),
+			),
+		),
+	);
 
+	/* Data */
+	$data = array( 'themes'  => array(), 'plugins' => array() );
 
+	/* Get Posts Data */
+	$query = new WP_Query( $args );
+	if ( $query->have_posts() ){
 
+		/* Start loop */
+		while ( $query->have_posts() ){
+			$query->the_post();
 
+			/* Post ID */
+			$post_id = get_the_ID();
 
+			/* Only if Plugin File/Theme Folder is set */
+			if( $repo_id = get_post_meta( $post_id, 'id', true ) ){
 
+				/* Version */
+				$version = get_post_meta( $post_id, 'version', true );
 
-
-
-
-
+				/* Data */
+				if( $version && 'theme_repo' == get_post_type() ){
+					$data['themes'][$repo_id] = array(
+						'version'       => fx_updater_sanitize_version( $version ),
+						'download_link' => esc_url_raw( get_post_meta( $post_id, 'download_link', true ) ),
+					);
+				}
+				if( $version && 'plugin_repo' == get_post_type() ){
+					$data['plugins'][$repo_id] = array(
+						'version'       => fx_updater_sanitize_version( $version ),
+						'download_link' => esc_url_raw( get_post_meta( $post_id, 'download_link', true ) ),
+						'tested'        => fx_updater_sanitize_version( get_post_meta( $post_id, 'tested', true ) ),
+						'requires'      => fx_updater_sanitize_version( get_post_meta( $post_id, 'requires', true ) ),
+						'last_updated'  => sanitize_title_with_dashes( get_post_meta( $post_id, 'last_updated', true ) ),
+						'sections'      => array(
+							'changelog' => fx_updater_sanitize_plugin_section( get_post_meta( $post_id, 'section_changelog', true ) ),
+						),
+					);
+				}
+			}
+		}
+	}
+	wp_reset_postdata();
+	return $data;
+}
 

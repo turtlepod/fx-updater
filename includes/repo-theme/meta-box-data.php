@@ -42,6 +42,9 @@ function fx_updater_theme_data_meta_box( $post ){
 	/** SLUG: This filter is documented in wp-admin/edit-tag-form.php */
 	$editable_slug = apply_filters( 'editable_slug', $post->post_name, $post );
 
+	/* Plugin ID */
+	$theme_id = get_post_meta( $post_id, 'id', true );
+
 	/* Download ZIP */
 	$download_link = get_post_meta( $post_id, 'download_link', true );
 
@@ -50,6 +53,22 @@ function fx_updater_theme_data_meta_box( $post ){
 	?>
 
 	<div class="fx-upmb-fields">
+
+		<div class="fx-upmb-field fx-upmb-home-url">
+			<div class="fx-upmb-field-label">
+				<p>
+					<label for="repo_uri"><?php _ex( 'Repository URL', 'themes', 'fx-updater' ); ?></label>
+				</p>
+			</div><!-- .fx-upmb-field-label -->
+			<div class="fx-upmb-field-content">
+				<p>
+					<input type="text" autocomplete="off" id="repo_uri" value="<?php echo esc_url( set_url_scheme( trailingslashit( home_url() ), 'http' ) ); ?>" readonly="readonly"/>
+				</p>
+				<p class="description">
+					<?php _ex( 'Use this as $repo_uri in updater config. This is your site home URL.', 'themes', 'fx-updater' ); ?>
+				</p>
+			</div><!-- .fx-upmb-field-content -->
+		</div><!-- .fx-upmb-field.fx-upmb-home-url -->
 
 		<div class="fx-upmb-field fx-upmb-slug">
 			<div class="fx-upmb-field-label">
@@ -67,21 +86,21 @@ function fx_updater_theme_data_meta_box( $post ){
 			</div><!-- .fx-upmb-field-content -->
 		</div><!-- .fx-upmb-field.fx-upmb-slug -->
 
-		<div class="fx-upmb-field fx-upmb-home-url">
+		<div class="fx-upmb-field fx-upmb-id">
 			<div class="fx-upmb-field-label">
 				<p>
-					<label for="repo_uri"><?php _ex( 'Repository URL', 'themes', 'fx-updater' ); ?></label>
+					<label for="theme_id"><?php _ex( 'Theme Folder', 'themes', 'fx-updater' ); ?></label>
 				</p>
 			</div><!-- .fx-upmb-field-label -->
 			<div class="fx-upmb-field-content">
 				<p>
-					<input type="text" autocomplete="off" id="repo_uri" value="<?php echo esc_url( set_url_scheme( trailingslashit( home_url() ), 'http' ) ); ?>" readonly="readonly"/>
+					<input name="id" type="text" id="theme_id" value="<?php echo esc_attr( $theme_id ); ?>"/>
 				</p>
 				<p class="description">
-					<?php _ex( 'Use this as $repo_uri in updater config. This is your site home URL.', 'themes', 'fx-updater' ); ?>
+					<?php _ex( 'Your theme folder. Required for group updater.', 'themes', 'fx-updater' ); ?>
 				</p>
 			</div><!-- .fx-upmb-field-content -->
-		</div><!-- .fx-upmb-field.fx-upmb-home-url -->
+		</div><!-- .fx-upmb-field.fx-upmb-id -->
 
 		<div class="fx-upmb-field fx-upmb-upload">
 			<div class="fx-upmb-field-label">
@@ -149,6 +168,27 @@ function fx_updater_theme_data_meta_box_save_post( $post_id, $post ){
 	$post_type = get_post_type_object( $post->post_type );
 	if ( 'theme_repo' != $post->post_type || !current_user_can( $post_type->cap->edit_post, $post_id ) ){
 		return $post_id;
+	}
+
+	/* == PLUGIN ID == */
+
+	/* Get (old) saved data */
+	$old_data = get_post_meta( $post_id, 'id', true );
+
+	/* Get new submitted data and sanitize it. */
+	$new_data = isset( $request['id'] ) ? esc_attr( $request['id'] ) : '';
+
+	/* New data submitted, No previous data, create it  */
+	if ( $new_data && '' == $old_data ){
+		add_post_meta( $post_id, 'id', $new_data, true );
+	}
+	/* New data submitted, but it's different data than previously stored data, update it */
+	elseif( $new_data && ( $new_data != $old_data ) ){
+		update_post_meta( $post_id, 'id', $new_data );
+	}
+	/* New data submitted is empty, but there's old data available, delete it. */
+	elseif ( empty( $new_data ) && $old_data ){
+		delete_post_meta( $post_id, 'id' );
 	}
 
 	/* == ZIP FILE == */

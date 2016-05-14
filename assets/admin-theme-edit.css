@@ -23,6 +23,15 @@
 
 /* === UPDATER CONFIG === */
 
+/* Home URL */
+.fx-upmb-home-url label{
+	font-size: 16px;
+	font-weight: 600;
+}
+#repo_uri{
+	width: 250px;
+	max-width: 100%;
+}
 /* Slug */
 .fx-upmb-slug label{
 	font-size: 16px;
@@ -32,12 +41,12 @@
 	width: 250px;
 	max-width: 100%;
 }
-/* Home URL */
-.fx-upmb-home-url label{
+/* Theme Folder {ID} */
+.fx-upmb-id label{
 	font-size: 16px;
 	font-weight: 600;
 }
-#repo_uri{
+#theme_id{
 	width: 250px;
 	max-width: 100%;
 }
