@@ -49,11 +49,18 @@ function fx_updater_updater_page(){
 
 		<h1><?php _ex( 'f(x) Updater', 'settings', 'fx-updater' ); ?></h1>
 
+		<?php
+		/**
+		 * Dashicon
+		 * font-size: 16px; vertical-align: middle;
+		 * On Mobile: show only icon (?) and fix font-size.
+		 */
+		?>
 		<h2 class="nav-tab-wrapper wp-clearfix">
-			<a class="nav-tab <?php fx_updater_tab_class(); ?>" href="<?php echo esc_url( $url ); ?>">Updater Plugin</a>
-			<a class="nav-tab  <?php fx_updater_tab_class( 'single_theme' ); ?>" href="<?php echo esc_url( $theme_url ); ?>">Single Theme</a>
-			<a class="nav-tab  <?php fx_updater_tab_class( 'single_plugin' ); ?>" href="<?php echo esc_url( $plugin_url ); ?>">Single Plugin</a>
-			<a class="nav-tab  <?php fx_updater_tab_class( 'get_code' ); ?>" href="<?php echo esc_url( $code_url ); ?>">Get Code</a>
+			<a class="nav-tab <?php fx_updater_tab_class(); ?>" href="<?php echo esc_url( $url ); ?>"><span class="dashicons dashicons-index-card"></span> Updater Plugin</a>
+			<a class="nav-tab  <?php fx_updater_tab_class( 'single_theme' ); ?>" href="<?php echo esc_url( $theme_url ); ?>"><span class="dashicons dashicons-admin-appearance"></span> Single Theme</a>
+			<a class="nav-tab  <?php fx_updater_tab_class( 'single_plugin' ); ?>" href="<?php echo esc_url( $plugin_url ); ?>"><span class="dashicons dashicons-admin-plugins"></span> Single Plugin</a>
+			<a class="nav-tab  <?php fx_updater_tab_class( 'get_code' ); ?>" href="<?php echo esc_url( $code_url ); ?>"><span class="dashicons dashicons-editor-code"></span> Get Code</a>
 		</h2>
 
 		<form method="post" action="<?php echo esc_url( $url ); ?>">

@@ -60,7 +60,7 @@ function fx_updater_plugin_data_meta_box( $post ){
 	}
 
 	/* WP Version */
-	$wp_requires = 'post-new.php' == $hook_suffix ? $wp_version : get_post_meta( $post_id, 'requires', true );
+	$wp_requires = 'post-new.php' == $hook_suffix ? "" : get_post_meta( $post_id, 'requires', true );
 	$wp_tested = 'post-new.php' == $hook_suffix ? $wp_version : get_post_meta( $post_id, 'tested', true );
 
 	/* Changelog */
