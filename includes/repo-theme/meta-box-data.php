@@ -50,6 +50,9 @@ function fx_updater_theme_data_meta_box( $post ){
 
 	/* Version */
 	$version = 'post-new.php' == $hook_suffix ? '1.0.0' : get_post_meta( $post_id, 'version', true );
+
+	/* Theme type */
+	$theme_type = fx_updater_sanitize_theme_type( get_post_meta( $post_id, 'theme_type', true ) );
 	?>
 
 	<div class="fx-upmb-fields">
@@ -120,6 +123,26 @@ function fx_updater_theme_data_meta_box( $post ){
 				</p>
 			</div><!-- .fx-upmb-field-content -->
 		</div><!-- .fx-upmb-field.fx-upmb-version-->
+
+		<div class="fx-upmb-field fx-upmb-theme-type">
+			<div class="fx-upmb-field-label">
+				<p>
+					<label><?php _ex( 'Type', 'themes', 'fx-updater' ); ?></label>
+				</p>
+			</div><!-- .fx-upmb-field-label -->
+			<div class="fx-upmb-field-content">
+				<p>
+					<label>
+						<input id="fxu_type_parent" type="radio" value="parent" name="theme_type" <?php checked( 'parent', $theme_type ); ?> > <?php _ex( 'Parent Theme', 'themes', 'fx-updater' ); ?>
+					</label>
+				</p>
+				<p>
+					<label>
+						<input id="fxu_type_child" type="radio" value="child" name="theme_type" <?php checked( 'child', $theme_type ); ?> > <?php _ex( 'Child Theme', 'themes', 'fx-updater' ); ?>
+					</label>
+				</p>
+			</div><!-- .fx-upmb-field-content -->
+		</div><!-- .fx-upmb-field.fx-upmb-theme-type-->
 
 	</div><!-- .fx-upmb-form -->
 
@@ -215,6 +238,27 @@ function fx_updater_theme_data_meta_box_save_post( $post_id, $post ){
 	/* New data submitted is empty, but there's old data available, delete it. */
 	elseif ( empty( $new_data ) && $old_data ){
 		delete_post_meta( $post_id, 'version' );
+	}
+
+	/* == THEME TYPE == */
+
+	/* Get (old) saved data */
+	$old_data = get_post_meta( $post_id, 'theme_type', true );
+
+	/* Get new submitted data and sanitize it. */
+	$new_data = isset( $request['theme_type'] ) ? fx_updater_sanitize_theme_type( $request['theme_type'] ) : '';
+
+	/* New data submitted, No previous data, create it  */
+	if ( $new_data && '' == $old_data ){
+		add_post_meta( $post_id, 'theme_type', $new_data, true );
+	}
+	/* New data submitted, but it's different data than previously stored data, update it */
+	elseif( $new_data && ( $new_data != $old_data ) ){
+		update_post_meta( $post_id, 'theme_type', $new_data );
+	}
+	/* New data submitted is empty, but there's old data available, delete it. */
+	elseif ( empty( $new_data ) && $old_data ){
+		delete_post_meta( $post_id, 'theme_type' );
 	}
 }
 

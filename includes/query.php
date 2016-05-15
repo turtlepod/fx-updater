@@ -144,14 +144,15 @@ function fx_updater_plugin_data(){
 	if( $version ){
 
 		$data = array(
-			'version'       => fx_updater_sanitize_version( $version ),
-			'download_link' => esc_url_raw( get_post_meta( $post_id, 'download_link', true ) ),
-			'tested'        => fx_updater_sanitize_version( get_post_meta( $post_id, 'tested', true ) ),
-			'requires'      => fx_updater_sanitize_version( get_post_meta( $post_id, 'requires', true ) ),
-			'last_updated'  => sanitize_title_with_dashes( get_post_meta( $post_id, 'last_updated', true ) ),
-			'sections'      => array(
-				'changelog' => fx_updater_sanitize_plugin_section( get_post_meta( $post_id, 'section_changelog', true ) ),
+			'version'        => fx_updater_sanitize_version( $version ),
+			'download_link'  => esc_url_raw( get_post_meta( $post_id, 'download_link', true ) ),
+			'tested'         => fx_updater_sanitize_version( get_post_meta( $post_id, 'tested', true ) ),
+			'requires'       => fx_updater_sanitize_version( get_post_meta( $post_id, 'requires', true ) ),
+			'last_updated'   => sanitize_title_with_dashes( get_post_meta( $post_id, 'last_updated', true ) ),
+			'sections'       => array(
+				'changelog'  => fx_updater_section_markdown_to_html( get_post_meta( $post_id, 'section_changelog', true ) ),
 			),
+			'upgrade_notice' => strip_tags( get_post_meta( $post_id, 'upgrade_notice', true ) ),
 		);
 	}
 
@@ -228,8 +229,9 @@ function fx_updater_group_data(){
 						'requires'      => fx_updater_sanitize_version( get_post_meta( $post_id, 'requires', true ) ),
 						'last_updated'  => sanitize_title_with_dashes( get_post_meta( $post_id, 'last_updated', true ) ),
 						'sections'      => array(
-							'changelog' => fx_updater_sanitize_plugin_section( get_post_meta( $post_id, 'section_changelog', true ) ),
+							'changelog' => fx_updater_section_markdown_to_html( get_post_meta( $post_id, 'section_changelog', true ) ),
 						),
+						'upgrade_notice' => strip_tags( get_post_meta( $post_id, 'upgrade_notice', true ) ),
 					);
 				}
 			}

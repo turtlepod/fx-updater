@@ -55,9 +55,6 @@ require_once( FX_UPDATER_PATH . 'includes/repo-theme/repo-theme.php' );
 /* Load Group Repo Functions */
 require_once( FX_UPDATER_PATH . 'includes/repo-group/repo-group.php' );
 
-/* Load Markdown Parser */
-require_once( FX_UPDATER_PATH . 'includes/library/markdown.php' );
-
 
 /* Plugins Loaded
 ------------------------------------------ */

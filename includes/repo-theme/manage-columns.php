@@ -58,6 +58,13 @@ function fx_updater_theme_custom_columns( $column, $post_id ){
 			if( 'publish' !== $post_status ){
 				$status = '<span class="up-status-inactive">' . _x( 'Not Active', 'themes', 'fx-updater' ) . '</span>';
 			}
+			$theme_type = fx_updater_sanitize_theme_type( get_post_meta( $post_id, 'theme_type', true ) );
+			if( 'parent' == $theme_type ){
+				$theme_type = _x( 'Parent Theme', 'themes', 'fx-updater' );
+			}
+			else{
+				$theme_type = _x( 'Child Theme', 'themes', 'fx-updater' );
+			}
 			?>
 			<div class="updater-info">
 				<p>
@@ -83,6 +90,10 @@ function fx_updater_theme_custom_columns( $column, $post_id ){
 				<p>
 					<span class="dashicons dashicons-category"></span>
 					<?php _ex( 'Theme Folder', 'themes', 'fx-updater' ); ?>: <strong><?php echo $theme_id; ?></strong>
+				</p>
+				<p>
+					<span class="dashicons dashicons-info"></span>
+					<?php _ex( 'Type', 'themes', 'fx-updater' ); ?>: <strong><?php echo $theme_type; ?></strong>
 				</p>
 			</div>
 			<?php

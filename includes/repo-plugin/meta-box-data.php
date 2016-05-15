@@ -68,6 +68,9 @@ function fx_updater_plugin_data_meta_box( $post ){
 
 	/* Changelog */
 	$changelog = get_post_meta( $post_id, 'section_changelog', true );
+
+	/* Upgrade Notice */
+	$upgrade_notice = strip_tags( get_post_meta( $post_id, 'upgrade_notice', true ) );
 	?>
 
 	<div class="fx-upmb-fields">
@@ -201,6 +204,22 @@ function fx_updater_plugin_data_meta_box( $post ){
 				</p>
 			</div><!-- .fx-upmb-field-content -->
 		</div><!-- .fx-upmb-field.fx-upmb-changelog-->
+
+		<div class="fx-upmb-field fx-upmb-upgrade-notice">
+			<div class="fx-upmb-field-label">
+				<p>
+					<label for="upgrade_notice"><?php _ex( 'Upgrade Notice', 'plugins', 'fx-updater' ); ?></label>
+				</p>
+			</div><!-- .fx-upmb-field-label -->
+			<div class="fx-upmb-field-content">
+				<p>
+					<input name="upgrade_notice" type="text" id="upgrade_notice" value="<?php echo sanitize_text_field( $upgrade_notice ); ?>"/>
+				</p>
+				<p class="description">
+					<?php _ex( 'Upgrade Notice for this version. No HTML allowed.', 'plugins', 'fx-updater' ); ?>
+				</p>
+			</div><!-- .fx-upmb-field-content -->
+		</div><!-- .fx-upmb-field.fx-upmb-upgrade-notice -->
 
 	</div><!-- .fx-upmb-form -->
 
@@ -389,6 +408,26 @@ function fx_updater_plugin_data_meta_box_save_post( $post_id, $post ){
 		delete_post_meta( $post_id, 'section_changelog' );
 	}
 
+	/* == UPGRADE NOTICE == */
+
+	/* Get (old) saved data */
+	$old_data = get_post_meta( $post_id, 'upgrade_notice', true );
+
+	/* Get new submitted data and sanitize it. */
+	$new_data = isset( $request['upgrade_notice'] ) ? strip_tags( $request['upgrade_notice'] ) : '';
+
+	/* New data submitted, No previous data, create it  */
+	if ( $new_data && '' == $old_data ){
+		add_post_meta( $post_id, 'upgrade_notice', $new_data, true );
+	}
+	/* New data submitted, but it's different data than previously stored data, update it */
+	elseif( $new_data && ( $new_data != $old_data ) ){
+		update_post_meta( $post_id, 'upgrade_notice', $new_data );
+	}
+	/* New data submitted is empty, but there's old data available, delete it. */
+	elseif ( empty( $new_data ) && $old_data ){
+		delete_post_meta( $post_id, 'upgrade_notice' );
+	}
 
 }
 
