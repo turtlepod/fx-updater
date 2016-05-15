@@ -38,6 +38,9 @@ define( 'FX_UPDATER_URI', trailingslashit( plugin_dir_url( __FILE__ ) ) );
 require_once( FX_UPDATER_PATH . 'includes/functions.php' );
 
 /* Load Settings Functions  */
+require_once( FX_UPDATER_PATH . 'includes/admin-scripts.php' );
+
+/* Load Settings Functions  */
 require_once( FX_UPDATER_PATH . 'includes/settings.php' );
 
 /* Load Query Functions */

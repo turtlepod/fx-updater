@@ -5,7 +5,6 @@
  * - Add Admin Menu as Settings Sub Menu
  * - Edit Post: Title Placeholder
  * - Edit Post: Updated Message
- * - Admin Scripts
  *
  * @since 1.0.0
 **/
@@ -25,7 +24,7 @@ function fx_updater_plugin_repo_register_post_type() {
 
 	/* === PLUGINS REPO === */
 
-	$plugin_args = array(
+	$args = array(
 		'description'           => '',
 		'public'                => false,
 		'publicly_queryable'    => false,
@@ -79,7 +78,7 @@ function fx_updater_plugin_repo_register_post_type() {
 	);
 
 	/* REGISTER "plugin_repo" POST TYPE */
-	register_post_type( 'plugin_repo', $plugin_args );
+	register_post_type( 'plugin_repo', $args );
 }
 
 
@@ -172,66 +171,4 @@ function fx_updater_plugin_updated_message( $messages ){
 
 	return $messages;
 }
-
-
-/* === ADMIN SCRIPTS === */
-
-
-/* Load Admin Scripts */
-add_action( 'admin_enqueue_scripts', 'fx_updater_plugin_admin_scripts' );
-
-
-/**
- * Admin Scripts
- */
-function fx_updater_plugin_admin_scripts( $hook ){
-	global $post_type;
-
-	/* Check post type */
-	if( 'plugin_repo' == $post_type ){
-
-		/* Edit (Columns) */
-		if( 'edit.php' == $hook ){
-
-			/* CSS */
-			wp_enqueue_style( 'fx-updater-plugin-admin-column', FX_UPDATER_URI . 'assets/admin-plugin-columns.css', array(), FX_UPDATER_VERSION );
-
-			/* JS */
-			wp_enqueue_script( 'fx-updater-plugin-admin-column', FX_UPDATER_URI. 'assets/admin-plugin-columns.js', array( 'jquery' ), FX_UPDATER_VERSION );
-		}
-
-		/* Post Edit */
-		if( in_array( $hook, array( 'post.php', 'post-new.php' ) ) ){
-
-			/* CSS */
-			wp_enqueue_style( 'fx-updater-plugin-admin-edit', FX_UPDATER_URI . 'assets/admin-plugin-edit.css', array(), FX_UPDATER_VERSION );
-
-			/* JS */
-			wp_enqueue_media(); // need this.
-			wp_enqueue_script( 'fx-updater-plugin-admin-edit', FX_UPDATER_URI. 'assets/admin-plugin-edit.js', array( 'jquery', 'jquery-ui-core', 'media-upload' ), FX_UPDATER_VERSION );
-			wp_localize_script( 'fx-updater-plugin-admin-edit', 'fx_upmb_upload',
-				array(
-					'title'  => _x( 'Upload Theme ZIP', 'plugins', 'fx-updater' ),
-					'button' => _x( 'Insert ZIP File', 'plugins', 'fx-updater' ),
-				)
-			);
-		}
-	}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -54,22 +54,6 @@ function fx_updater_theme_data_meta_box( $post ){
 
 	<div class="fx-upmb-fields">
 
-		<div class="fx-upmb-field fx-upmb-home-url">
-			<div class="fx-upmb-field-label">
-				<p>
-					<label for="repo_uri"><?php _ex( 'Repository URL', 'themes', 'fx-updater' ); ?></label>
-				</p>
-			</div><!-- .fx-upmb-field-label -->
-			<div class="fx-upmb-field-content">
-				<p>
-					<input type="text" autocomplete="off" id="repo_uri" value="<?php echo esc_url( set_url_scheme( trailingslashit( home_url() ), 'http' ) ); ?>" readonly="readonly"/>
-				</p>
-				<p class="description">
-					<?php _ex( 'Use this as $repo_uri in updater config. This is your site home URL.', 'themes', 'fx-updater' ); ?>
-				</p>
-			</div><!-- .fx-upmb-field-content -->
-		</div><!-- .fx-upmb-field.fx-upmb-home-url -->
-
 		<div class="fx-upmb-field fx-upmb-slug">
 			<div class="fx-upmb-field-label">
 				<p>
