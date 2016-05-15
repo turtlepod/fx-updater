@@ -1,9 +1,0 @@
-/* Load Plugin Updater */
-require_once( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'updater.php' );
-
-/* Load */
-$config = array(
-	'repo_uri'   => '{{repo_uri}}',
-	'repo_group' => '{{id}}',
-);
-${{prefix}}_updater = new {{prefix}}_Updater( $config );

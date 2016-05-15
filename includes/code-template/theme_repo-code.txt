@@ -1,0 +1,7 @@
+/* Load Updater */
+require_once( trailingslashit( get_template_directory() ) . 'includes/updater.php' );
+$config = array(
+	'repo_uri'   => 'http://dev.play/',
+	'repo_slug'  => 'repo-slug',
+);
+$prefix_theme_updater = new prefix_Theme_Updater( $config );

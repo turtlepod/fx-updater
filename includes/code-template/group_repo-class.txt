@@ -1,7 +1,8 @@
+<?php
 /**
  * Updater Class
 **/
-class {{prefix}}_Updater{
+class prefix_Updater{
 
 	/* Config */
 	var $config;
@@ -18,6 +19,8 @@ class {{prefix}}_Updater{
 			'post'        => array(),
 		);
 		$this->config = wp_parse_args( $config, $defaults );
+		$this->config['post']['updater_version'] = '1.0.0';
+		$this->config['post']['updater_type'] = 'group';
 
 		/* Admin Init */
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
@@ -288,18 +291,18 @@ class {{prefix}}_Updater{
 
 					/* rename the folder */
 					if( @rename( $source, $new_source ) ){
-						$upgrader->skin->feedback( _x( 'Renamed theme folder successfully.', 'updater', '{{domain}}' ) );
+						$upgrader->skin->feedback( _x( 'Renamed theme folder successfully.', 'updater', 'domain' ) );
 						return $new_source;
 					}
 					/* Unable to rename the folder to correct theme folder */
 					else{
-						$upgrader->skin->feedback( _x( 'Unable to rename updated theme.', 'updater', '{{domain}}' ) );
+						$upgrader->skin->feedback( _x( 'Unable to rename updated theme.', 'updater', 'domain' ) );
 						return new WP_Error();
 					}
 				}
 				/* Fallback */
 				else{
-					$upgrader->skin->feedback( _x( 'Source or Remote Source is unavailable.', 'updater', '{{domain}}' ) );
+					$upgrader->skin->feedback( _x( 'Source or Remote Source is unavailable.', 'updater', 'domain' ) );
 				}
 			}
 		}
@@ -333,11 +336,10 @@ class {{prefix}}_Updater{
 				$activate = activate_plugin( $plugin );
 
 				/* Update message */
-				echo is_wp_error( $activate ) ? _x( 'Plugin could not be reactivated.', 'updater', '{{domain}}' ) : _x( 'Plugin reactivated successfully.', 'updater', '{{domain}}' );
+				echo is_wp_error( $activate ) ? _x( 'Plugin could not be reactivated.', 'updater', 'domain' ) : _x( 'Plugin reactivated successfully.', 'updater', 'domain' );
 			}
 		}
 
 		return $true;
 	}
 }
-
