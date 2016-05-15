@@ -38,13 +38,25 @@ define( 'FX_UPDATER_URI', trailingslashit( plugin_dir_url( __FILE__ ) ) );
 require_once( FX_UPDATER_PATH . 'includes/functions.php' );
 
 /* Load Settings Functions  */
+require_once( FX_UPDATER_PATH . 'includes/admin-scripts.php' );
+
+/* Load Settings Functions  */
 require_once( FX_UPDATER_PATH . 'includes/settings.php' );
+
+/* Load Query Functions */
+require_once( FX_UPDATER_PATH . 'includes/query.php' );
 
 /* Load Plugin Repo Functions  */
 require_once( FX_UPDATER_PATH . 'includes/repo-plugin/repo-plugin.php' );
 
 /* Load Theme Repo Functions */
 require_once( FX_UPDATER_PATH . 'includes/repo-theme/repo-theme.php' );
+
+/* Load Group Repo Functions */
+require_once( FX_UPDATER_PATH . 'includes/repo-group/repo-group.php' );
+
+/* Load Markdown Parser */
+require_once( FX_UPDATER_PATH . 'includes/library/markdown.php' );
 
 
 /* Plugins Loaded
@@ -162,7 +174,7 @@ function fx_updater_plugin_activation_notice(){
 	$transient = get_transient( 'fx_updater_activation_notice' );
 	if( $transient ){
 		?>
-		<div class="updated info is-dismissible">
+		<div class="notice notice-info is-dismissible">
 			<p><?php _e( 'Thank you for using our plugin :)', 'fx-updater' ); ?></p>
 		</div>
 		<?php

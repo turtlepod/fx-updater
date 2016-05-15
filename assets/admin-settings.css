@@ -1,0 +1,123 @@
+/**
+ * Settings CSS
+**/
+
+/* Tab */
+.nav-tab{
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+}
+.nav-tab .dashicons{
+	font-size: 16px;
+	vertical-align: middle;
+}
+
+/* Settings Form */
+.fx-updater-settings-form{
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+}
+.fx-updater-settings-form *,
+.fx-updater-settings-form *:before,
+.fx-updater-settings-form *:after {
+	-moz-box-sizing:inherit;
+	-webkit-box-sizing:inherit;
+	box-sizing:inherit;
+}
+.fx-updater-settings-form{
+	border: 1px solid #e5e5e5;
+	background: #fff;
+	padding: 20px 10px;
+	margin: 20px 0;
+}
+.fx-updater-settings-form:after{
+	content:".";display:block;height:0;clear:both;visibility:hidden;
+}
+.fx-updater-settings-form .field{
+	padding-left: 10px;
+	padding-right: 10px;
+	float: left;
+	width: 25%;
+}
+.fx-updater-settings-form .field label{
+	font-size: 14px;
+	margin-top: 5px;
+	font-style: italic;
+	display: block;
+	font-weight: 400;
+}
+#fxu_code_prefix,
+#fxu_text_domain,
+#fxu_select_group,
+#fxu_get_code{
+	width: 100%;
+	max-width: 100%;
+}
+
+/* Box */
+.fxup-box{
+	border: 1px solid #e5e5e5;
+	background: #fff;
+	margin-bottom: 20px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+.fxup-box .title{
+	padding: 15px 20px;
+	font-size: 16px;
+	font-weight: 600;
+	border-bottom: 1px solid #eee;
+}
+.fxup-box .inner{
+	padding: 20px;
+	padding-top: 0;
+}
+textarea.pre {
+	white-space: pre;
+	word-wrap: normal;
+	width: 100%;
+	overflow:auto;
+	padding: 15px;
+	font-size: 14px;
+	line-height: 1.5em;
+	resize: none;
+	font-size: 16px;
+	font-family: Monaco,monospace,Courier,"Courier New";
+}
+
+/* == MEDIA QUERIES === */
+@media screen and ( max-width: 800px ) {
+	.fx-updater-settings-form .field{
+		width: 50%;
+	}
+	.fxup-code-prefix,
+	.fxup-text-domain{
+		margin-bottom: 20px;
+	}
+}
+@media screen and ( max-width: 600px ) {
+	.nav-tab{
+		width: 100%;
+	}
+	.fx-updater-settings-form .field{
+		width: 100%;
+		margin-bottom: 20px;
+	}
+	.fx-updater-settings-form .fxup-submit{
+		margin-bottom: 0;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -3,6 +3,8 @@
  * REPO THEME: REGISTER POST TYPE
  * - Register Post Type
  * - Add Admin Menu as Settings Sub Menu
+ * - Edit Post: Title Placeholder
+ * - Edit Post: Updated Message
  *
  * @since 1.0.0
 **/
@@ -12,21 +14,21 @@ if ( ! defined( 'WPINC' ) ) { die; }
 /* === REGISTER POST TYPE === */
 
 /* add register post type on the 'init' hook */
-add_action( 'init', 'fx_updater_theme_repo_register_post_type' );
+add_action( 'init', 'fx_updater_theme_register_post_type' );
 
 
 /**
  * Register Post Type
  * @since  0.1.0
  */
-function fx_updater_theme_repo_register_post_type() {
+function fx_updater_theme_register_post_type() {
 
 	/* === THEMES REPO === */
 
-	$theme_args = array(
+	$args = array(
 		'description'           => '',
 		'public'                => false,
-		'publicly_queryable'    => true,
+		'publicly_queryable'    => false,
 		'show_in_nav_menus'     => false,
 		'show_in_admin_bar'     => false,
 		'exclude_from_search'   => true,
@@ -38,7 +40,7 @@ function fx_updater_theme_repo_register_post_type() {
 		'delete_with_user'      => false,
 		'hierarchical'          => false,
 		'has_archive'           => false, 
-		'query_var'             => true,
+		'query_var'             => false,
 		'rewrite'               => false,
 		'capability_type'       => 'theme_repo',
 		'map_meta_cap'          => true,
@@ -61,58 +63,57 @@ function fx_updater_theme_repo_register_post_type() {
 		),
 		'supports'              => array( 'title' ),
 		'labels'                => array(
-			'name'                      => _x( 'Themes Updater', 'post-type', 'fx-updater' ),
-			'singular_name'             => _x( 'Theme Repo', 'post-type', 'fx-updater' ),
-			'add_new'                   => _x( 'Add New', 'post-type', 'fx-updater' ),
-			'add_new_item'              => _x( 'Add New Theme Repo', 'post-type', 'fx-updater' ),
-			'edit_item'                 => _x( 'Edit Theme Repo', 'post-type', 'fx-updater' ),
-			'new_item'                  => _x( 'New Theme Repo', 'post-type', 'fx-updater' ),
-			'all_items'                 => _x( 'All Themes', 'post-type', 'fx-updater' ),
-			'view_item'                 => _x( 'View Theme Repo', 'post-type', 'fx-updater' ),
-			'search_items'              => _x( 'Search Theme Repo', 'post-type', 'fx-updater' ),
-			'not_found'                 => _x( 'No Theme Repo found', 'post-type', 'fx-updater' ),
-			'not_found_in_trash'        => _x( 'No Theme Repo found in Trash', 'post-type', 'fx-updater' ), 
-			'menu_name'                 => _x( 'Themes', 'post-type', 'fx-updater' ),
+			'name'                      => _x( 'Themes Repository', 'themes', 'fx-updater' ),
+			'singular_name'             => _x( 'Theme', 'themes', 'fx-updater' ),
+			'add_new'                   => _x( 'Add New', 'themes', 'fx-updater' ),
+			'add_new_item'              => _x( 'Add New Theme Repo', 'themes', 'fx-updater' ),
+			'edit_item'                 => _x( 'Edit Theme', 'themes', 'fx-updater' ),
+			'new_item'                  => _x( 'New Theme', 'themes', 'fx-updater' ),
+			'all_items'                 => _x( 'All Themes', 'themes', 'fx-updater' ),
+			'view_item'                 => _x( 'View Theme', 'themes', 'fx-updater' ),
+			'search_items'              => _x( 'Search Theme', 'themes', 'fx-updater' ),
+			'not_found'                 => _x( 'No Theme Found', 'themes', 'fx-updater' ),
+			'not_found_in_trash'        => _x( 'No Theme Found in Trash', 'themes', 'fx-updater' ), 
+			'menu_name'                 => _x( 'Themes', 'themes', 'fx-updater' ),
 		),
 	);
 
-	/* REGISTER "theme_repo" POST TYPE */
-	register_post_type( 'theme_repo', $theme_args );
+	/* Register "theme_repo" post type */
+	register_post_type( 'theme_repo', $args );
 }
 
 
 /* === ADD ADMIN MENU AS SUB MENU === */
 
 /* Admin Menu */
-add_action( 'admin_menu', 'fx_updater_theme_repo_admin_menu' );
+add_action( 'admin_menu', 'fx_updater_theme_admin_menu' );
 
 /**
  * Add admin menu,
  * Submenu in fx updater settings.
  * @since 0.1.0
  */
-function fx_updater_theme_repo_admin_menu(){
+function fx_updater_theme_admin_menu(){
 
-	/* Add Submenu Page: Plugin Repo */
-	$plugin_repo = get_post_type_object( 'theme_repo' );
+	$cpt_obj = get_post_type_object( 'theme_repo' );
 	add_submenu_page(
-		'fx_updater',                       // parent slug
-		$plugin_repo->labels->name,         // page title
-		$plugin_repo->labels->menu_name,    // menu title
-		$plugin_repo->cap->edit_posts,      // capability (edit_fx_updaters)
-		'edit.php?post_type=theme_repo'     // menu slug
+		'fx_updater',                     // parent slug
+		$cpt_obj->labels->name,           // page title
+		$cpt_obj->labels->menu_name,      // menu title
+		$cpt_obj->cap->edit_posts,        // capability
+		'edit.php?post_type=theme_repo'   // menu slug
 	);
 
 }
 
 /* Parent Menu Fix */
-add_filter( 'parent_file', 'fx_updater_theme_repo_parent_file' );
+add_filter( 'parent_file', 'fx_updater_theme_parent_file' );
 
 /**
  * Fix Parent Admin Menu to point to f(x) Updater settings
  * @since 0.1.0
  */
-function fx_updater_theme_repo_parent_file( $parent_file ){
+function fx_updater_theme_parent_file( $parent_file ){
 	global $current_screen, $self;
 	if ( in_array( $current_screen->base, array( 'post', 'edit' ) ) && 'theme_repo' == $current_screen->post_type ) {
 		$parent_file = 'fx_updater';
@@ -120,12 +121,52 @@ function fx_updater_theme_repo_parent_file( $parent_file ){
 	return $parent_file;
 }
 
+/* === EDIT POST: TITLE PLACEHOLDER === */
+
+/* Title Placeholder */
+add_filter( 'enter_title_here', 'fx_updater_theme_edit_title_placeholder', 10, 2 );
+
+/**
+ * Change "Enter title here" to "Plugin Name"
+ * @since 0.1.0
+ */
+function fx_updater_theme_edit_title_placeholder( $placeholder, $post ){
+	if( 'theme_repo' == get_post_type( $post ) ){
+		$placeholder = _x( 'Theme Name', 'themes', 'fx-updater' );
+	}
+	return $placeholder;
+}
 
 
+/* === EDIT POST: UPDATED MESSAGE === */
 
+/* Updated message */
+add_filter( 'post_updated_messages', 'fx_updater_theme_updated_message' );
 
+/**
+ * Custom Updated Message
+ * @since 0.1.0
+ */
+function fx_updater_theme_updated_message( $messages ){
+	global $post, $post_ID;
 
+	$messages['theme_repo'] = array(
+		 0 => '', // Unused. Messages start at index 1.
+		 1 => _x( 'Theme updated.', 'themes', 'fx-updater' ),
+		 2 => _x( 'Theme field updated.', 'themes', 'fx-updater' ),
+		 3 => _x( 'Theme field deleted.', 'themes', 'fx-updater' ),
+		 4 => _x( 'Theme updated.', 'themes', 'fx-updater' ),
+		/* translators: %s: date and time of the revision */
+		 5 => isset($_GET['revision']) ? sprintf( _x( 'Theme restored to revision from %s', 'themes', 'fx-updater' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+		 6 => _x( 'Theme published.', 'themes', 'fx-updater' ),
+		 7 => _x( 'Theme saved.', 'themes', 'fx-updater' ),
+		 8 => _x( 'Theme submitted.', 'themes', 'fx-updater' ),
+		 9 => sprintf( _x( 'Theme scheduled for: <strong>%1$s</strong>.', 'themes', 'fx-updater' ),
+			/* translators: Publish box date format, see http://php.net/date */
+			date_i18n( _x( 'M j, Y @ H:i', 'themes', 'fx-updater' ), strtotime( $post->post_date ) ) ),
+		10 => _x( 'Theme draft updated.', 'themes', 'fx-updater' ),
+	);
 
-
-
+	return $messages;
+}
 

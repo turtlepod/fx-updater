@@ -1,0 +1,106 @@
+.fx-upmb-fields:after{
+	content:".";display:block;height:0;clear:both;visibility:hidden;
+}
+.fx-upmb-field{
+	padding-bottom: 10px;
+	margin-bottom: 10x;
+	border-bottom: 1px solid #eee;
+}
+.fx-upmb-field:after{
+	content:".";display:block;height:0;clear:both;visibility:hidden;
+}
+.fx-upmb-field:last-child{
+	border-bottom: none;
+}
+.fx-upmb-field-label{
+	width: 250px;
+	float: left;
+}
+.fx-upmb-field-label label{
+	font-size: 16px;
+	font-weight: 600;
+}
+.fx-upmb-field-content{
+	float: left;
+	max-width: 100%;
+}
+
+/* Slug */
+#repo_slug{
+	width: 250px;
+	max-width: 100%;
+}
+/* Theme Folder {ID} */
+#theme_id{
+	width: 250px;
+	max-width: 100%;
+}
+/* Upload */
+#fxu_download_link{
+	width: 400px;
+	max-width: 100%;
+}
+/* Version */
+#fxu_version{
+	width: 80px;
+	max-width: 100%;
+}
+.fx-upmb-desc{
+	color: #666;
+	display: inline-block;
+	font-style: italic;
+	font-size: 13px;
+}
+
+/* === PLUGIN === */
+
+/* Plugin ID */
+#plugin_id{
+	width: 400px;
+	max-width: 100%;
+}
+/* Month */
+.fx-upmb-month{
+	width: 80px;
+	padding: 1px 1px 1px 1px;
+}
+/* Day */
+.fx-upmb-day{
+	position: relative;
+	top: 2px;
+	padding: 3px 6px 4px 6px;
+}
+/* Year */
+.fx-upmb-year{
+	position: relative;
+	top: 2px;
+	padding: 3px 6px 4px 6px;
+}
+/* WP Version */
+#wp_requires,
+#wp_tested{
+	width: 80px;
+	max-width: 100%;
+}
+/* Changelog */
+#fxu_changelog{
+	width: 400px;
+	max-width: 100%;
+}
+.fx-upmb-changelog-area{
+	font-size: 13px;
+	line-height: 1.5;
+	margin: 1em 0;
+}
+
+/* Media Queries */
+@media screen and ( max-width: 1200px ) {
+	.fx-upmb-field-label{
+		width: 100%;
+		float: none;
+	}
+	.fx-upmb-field-content{
+		width: 100%;
+		float: none;
+	}
+}

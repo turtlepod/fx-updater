@@ -1,0 +1,40 @@
+.up-status-active{
+	display: inline-block;
+	padding: 1px 5px;
+	background: #d9ffe2;
+	border: 1px solid #63fd87;
+	border-radius: 3px;
+}
+.up-status-inactive{
+	display: inline-block;
+	padding: 1px 5px;
+	background: #ffd4ae;
+	border: 1px solid #ffa04b;
+	border-radius: 3px;
+}
+.group-status-active{
+	display: inline-block;
+	padding: 0 5px;
+	border-bottom: 2px solid #63fd87;
+}
+.group-status-inactive{
+	display: inline-block;
+	padding: 0 5px;
+	border-bottom: 2px solid #ffa04b;
+}
+.updater-info strong{
+	display: inline-block;
+}
+.updater-info p{
+	padding-left: 30px;
+	position: relative;
+}
+.updater-info .dashicons{
+	position: absolute;
+	left: 0;
+	top: 0;
+	color: #bbb;
+}
+.updater-info p:hover .dashicons{
+	color: #aaa;
+}
