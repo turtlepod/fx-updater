@@ -41,7 +41,7 @@ require_once( FX_UPDATER_PATH . 'includes/functions.php' );
 require_once( FX_UPDATER_PATH . 'includes/admin-scripts.php' );
 
 /* Load Query Functions */
-require_once( FX_UPDATER_PATH . 'includes/query.php' );
+require_once( FX_UPDATER_PATH . 'includes/api/api.php' );
 
 /* Load Settings Functions  */
 require_once( FX_UPDATER_PATH . 'includes/get-code/settings.php' );

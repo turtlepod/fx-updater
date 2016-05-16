@@ -56,22 +56,3 @@ function fx_updater_settings_page(){
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,8 +1,0 @@
-/* Load Updater */
-require_once( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/updater.php' );
-$config = array(
-	'plugin'    => plugin_basename( __FILE__ ),
-	'repo_uri'  => 'http://dev.play/',
-	'repo_slug' => 'repo-slug',
-);
-$prefix_plugin_updater = new prefix_Plugin_Updater( $config );

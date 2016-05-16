@@ -22,9 +22,6 @@ function fx_updater_plugin_data_add_meta_boxes(){
 		'normal',                                        // Context
 		'default'                                        // Priority
 	);
-
-	/* Remove WP Core Slug Meta Box */
-	remove_meta_box( 'slugdiv', array( 'plugin_repo' ), 'normal' );
 }
 
 
@@ -38,9 +35,6 @@ function fx_updater_plugin_data_add_meta_boxes(){
 function fx_updater_plugin_data_meta_box( $post ){
 	global $hook_suffix, $wp_version;
 	$post_id = $post->ID;
-
-	/** SLUG: This filter is documented in wp-admin/edit-tag-form.php */
-	$editable_slug = apply_filters( 'editable_slug', $post->post_name, $post );
 
 	/* Plugin ID */
 	$plugin_id = get_post_meta( $post_id, 'id', true );
@@ -75,26 +69,10 @@ function fx_updater_plugin_data_meta_box( $post ){
 
 	<div class="fx-upmb-fields">
 
-		<div class="fx-upmb-field fx-upmb-slug">
-			<div class="fx-upmb-field-label">
-				<p>
-					<label for="repo_slug"><?php _ex( 'Plugin Slug', 'plugins', 'fx-updater' ); ?></label>
-				</p>
-			</div><!-- .fx-upmb-field-label -->
-			<div class="fx-upmb-field-content">
-				<p>
-					<input name="post_name" type="text" id="repo_slug" value="<?php echo esc_attr( $editable_slug ); ?>" />
-				</p>
-				<p class="description">
-					<?php _ex( 'Use this as $repo_slug in updater config.', 'plugins', 'fx-updater' ); ?>
-				</p>
-			</div><!-- .fx-upmb-field-content -->
-		</div><!-- .fx-upmb-field.fx-upmb-slug -->
-
 		<div class="fx-upmb-field fx-upmb-id">
 			<div class="fx-upmb-field-label">
 				<p>
-					<label for="plugin_id"><?php _ex( 'Plugin File', 'plugins', 'fx-updater' ); ?></label>
+					<label for="plugin_id"><?php _ex( 'Plugin ID', 'plugins', 'fx-updater' ); ?></label>
 				</p>
 			</div><!-- .fx-upmb-field-label -->
 			<div class="fx-upmb-field-content">
@@ -102,10 +80,24 @@ function fx_updater_plugin_data_meta_box( $post ){
 					<input name="id" type="text" id="plugin_id" value="<?php echo esc_attr( $plugin_id ); ?>" placeholder="plugin-folder/plugin-file.php"/>
 				</p>
 				<p class="description">
-					<?php _ex( 'Your plugin file. Required for group updater.', 'plugins', 'fx-updater' ); ?>
+					<?php _ex( 'Your plugin file (required).', 'plugins', 'fx-updater' ); ?>
 				</p>
 			</div><!-- .fx-upmb-field-content -->
 		</div><!-- .fx-upmb-field.fx-upmb-id -->
+
+		<div class="fx-upmb-field fx-upmb-version">
+			<div class="fx-upmb-field-label">
+				<p>
+					<label for="fxu_version"><?php _ex( 'Version', 'plugins', 'fx-updater' ); ?></label>
+				</p>
+			</div><!-- .fx-upmb-field-label -->
+			<div class="fx-upmb-field-content">
+				<p>
+					<input id="fxu_version" autocomplete="off" name="version" placeholder="e.g 1.0.0" type="text" value="<?php echo fx_updater_sanitize_version( $version ); ?>"> 
+					<span class="fx-upmb-desc"><?php _ex( 'Latest plugin version (required).', 'plugins', 'fx-updater' ); ?></span>
+				</p>
+			</div><!-- .fx-upmb-field-content -->
+		</div><!-- .fx-upmb-field.fx-upmb-version-->
 
 		<div class="fx-upmb-field fx-upmb-upload">
 			<div class="fx-upmb-field-label">
@@ -127,20 +119,6 @@ function fx_updater_plugin_data_meta_box( $post ){
 				</p>
 			</div><!-- .fx-upmb-field-content -->
 		</div><!-- .fx-upmb-field.fx-upmb-upload -->
-
-		<div class="fx-upmb-field fx-upmb-version">
-			<div class="fx-upmb-field-label">
-				<p>
-					<label for="fxu_version"><?php _ex( 'Version', 'plugins', 'fx-updater' ); ?></label>
-				</p>
-			</div><!-- .fx-upmb-field-label -->
-			<div class="fx-upmb-field-content">
-				<p>
-					<input id="fxu_version" autocomplete="off" name="version" placeholder="e.g 1.0.0" type="text" value="<?php echo fx_updater_sanitize_version( $version ); ?>"> 
-					<span class="fx-upmb-desc"><?php _ex( 'Latest plugin version.', 'plugins', 'fx-updater' ); ?></span>
-				</p>
-			</div><!-- .fx-upmb-field-content -->
-		</div><!-- .fx-upmb-field.fx-upmb-version-->
 
 		<div class="fx-upmb-field fx-upmb-last-updated">
 			<div class="fx-upmb-field-label">
@@ -430,19 +408,4 @@ function fx_updater_plugin_data_meta_box_save_post( $post_id, $post ){
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

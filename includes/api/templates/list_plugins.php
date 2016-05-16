@@ -1,8 +1,5 @@
 <?php
-/**
- * Query Plugin Data as JSON
-**/
-$data = fx_updater_plugin_data();
+$data = fx_updater_list_plugins();
 nocache_headers();
 header( 'Content-Type: application/json; charset=utf-8' );
 header( 'Expires: 0' );

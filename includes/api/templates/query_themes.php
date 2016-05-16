@@ -1,8 +1,5 @@
 <?php
-/**
- * Query Theme Data as JSON
-**/
-$data = fx_updater_theme_data();
+$data = fx_updater_query_themes();
 nocache_headers();
 header( 'Content-Type: application/json; charset=utf-8' );
 header( 'Expires: 0' );
