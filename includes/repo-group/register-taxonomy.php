@@ -54,6 +54,7 @@ function fx_updater_group_repo_register_taxonomy() {
 	);
 
 	/* Register Custom Taxonomy */
+	$args = apply_filters( 'group_repo_taxonomy_args', $args );
 	register_taxonomy( 'group_repo', array( 'plugin_repo', 'theme_repo' ), $args );
 }
 
