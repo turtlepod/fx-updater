@@ -3,5 +3,8 @@
  * Query Plugin Data as JSON
 **/
 $data = fx_updater_plugin_data();
-header( 'Content-Type: application/json' );
+nocache_headers();
+header( 'Content-Type: application/json; charset=utf-8' );
+header( 'Expires: 0' );
 echo json_encode( $data );
+exit;
