@@ -15,6 +15,18 @@ function fx_updater_sanitize_version( $input ){
 }
 
 /**
+ * Sanitize Theme Type
+ * @since 0.1.0
+ */
+function fx_updater_sanitize_theme_type( $input ){
+	$valid_type = array( 'parent', 'child' );
+	if( in_array( $input, $valid_type ) ){
+		return $input;
+	}
+	return 'parent';
+}
+
+/**
  * Return array of date/month/year.
  * false if not valid.
  * @param $input string.
@@ -88,4 +100,18 @@ function fx_updater_sanitize_plugin_section( $input ){
 
 	$output = wp_kses( $input, $plugins_allowedtags );
 	return $output;
+}
+
+
+/**
+ * Markdown to HTML
+ * @since 0.1.0
+ */
+function fx_updater_section_markdown_to_html( $input ){
+
+	/* Load Markdown Parser */
+	require_once( FX_UPDATER_PATH . 'includes/library/markdown.php' );
+
+	//return wpautop( fx_updater_sanitize_plugin_section( fx_updater_markdown( $input ) ) );
+	return fx_updater_markdown( $input );
 }

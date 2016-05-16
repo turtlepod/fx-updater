@@ -22,9 +22,6 @@ function fx_updater_theme_data_add_meta_boxes(){
 		'normal',                                       // Context
 		'default'                                       // Priority
 	);
-
-	/* Remove WP Core Slug Meta Box */
-	remove_meta_box( 'slugdiv', array( 'theme_repo' ), 'normal' );
 }
 
 
@@ -39,10 +36,7 @@ function fx_updater_theme_data_meta_box( $post ){
 	global $hook_suffix, $wp_version;
 	$post_id = $post->ID;
 
-	/** SLUG: This filter is documented in wp-admin/edit-tag-form.php */
-	$editable_slug = apply_filters( 'editable_slug', $post->post_name, $post );
-
-	/* Plugin ID */
+	/* Theme ID */
 	$theme_id = get_post_meta( $post_id, 'id', true );
 
 	/* Download ZIP */
@@ -50,30 +44,17 @@ function fx_updater_theme_data_meta_box( $post ){
 
 	/* Version */
 	$version = 'post-new.php' == $hook_suffix ? '1.0.0' : get_post_meta( $post_id, 'version', true );
+
+	/* Theme type */
+	$theme_type = fx_updater_sanitize_theme_type( get_post_meta( $post_id, 'theme_type', true ) );
 	?>
 
 	<div class="fx-upmb-fields">
 
-		<div class="fx-upmb-field fx-upmb-slug">
-			<div class="fx-upmb-field-label">
-				<p>
-					<label for="repo_slug"><?php _ex( 'Theme Slug', 'themes', 'fx-updater' ); ?></label>
-				</p>
-			</div><!-- .fx-upmb-field-label -->
-			<div class="fx-upmb-field-content">
-				<p>
-					<input name="post_name" type="text" id="repo_slug" value="<?php echo esc_attr( $editable_slug ); ?>" />
-				</p>
-				<p class="description">
-					<?php _ex( 'Use this as $repo_slug in updater config.', 'themes', 'fx-updater' ); ?>
-				</p>
-			</div><!-- .fx-upmb-field-content -->
-		</div><!-- .fx-upmb-field.fx-upmb-slug -->
-
 		<div class="fx-upmb-field fx-upmb-id">
 			<div class="fx-upmb-field-label">
 				<p>
-					<label for="theme_id"><?php _ex( 'Theme Folder', 'themes', 'fx-updater' ); ?></label>
+					<label for="theme_id"><?php _ex( 'Theme ID', 'themes', 'fx-updater' ); ?></label>
 				</p>
 			</div><!-- .fx-upmb-field-label -->
 			<div class="fx-upmb-field-content">
@@ -81,10 +62,24 @@ function fx_updater_theme_data_meta_box( $post ){
 					<input name="id" type="text" id="theme_id" value="<?php echo esc_attr( $theme_id ); ?>"/>
 				</p>
 				<p class="description">
-					<?php _ex( 'Your theme folder. Required for group updater.', 'themes', 'fx-updater' ); ?>
+					<?php _ex( 'Your theme folder (required).', 'themes', 'fx-updater' ); ?>
 				</p>
 			</div><!-- .fx-upmb-field-content -->
 		</div><!-- .fx-upmb-field.fx-upmb-id -->
+
+		<div class="fx-upmb-field fx-upmb-version">
+			<div class="fx-upmb-field-label">
+				<p>
+					<label for="fxu_version"><?php _ex( 'Version', 'themes', 'fx-updater' ); ?></label>
+				</p>
+			</div><!-- .fx-upmb-field-label -->
+			<div class="fx-upmb-field-content">
+				<p>
+					<input id="fxu_version" autocomplete="off" name="version" placeholder="e.g 1.0.0" type="text" value="<?php echo fx_updater_sanitize_version( $version ); ?>"> 
+					<span class="fx-upmb-desc"><?php _ex( 'Latest theme version (required).', 'themes', 'fx-updater' ); ?></span>
+				</p>
+			</div><!-- .fx-upmb-field-content -->
+		</div><!-- .fx-upmb-field.fx-upmb-version-->
 
 		<div class="fx-upmb-field fx-upmb-upload">
 			<div class="fx-upmb-field-label">
@@ -106,20 +101,6 @@ function fx_updater_theme_data_meta_box( $post ){
 				</p>
 			</div><!-- .fx-upmb-field-content -->
 		</div><!-- .fx-upmb-field.fx-upmb-upload -->
-
-		<div class="fx-upmb-field fx-upmb-version">
-			<div class="fx-upmb-field-label">
-				<p>
-					<label for="fxu_version"><?php _ex( 'Version', 'themes', 'fx-updater' ); ?></label>
-				</p>
-			</div><!-- .fx-upmb-field-label -->
-			<div class="fx-upmb-field-content">
-				<p>
-					<input id="fxu_version" autocomplete="off" name="version" placeholder="e.g 1.0.0" type="text" value="<?php echo fx_updater_sanitize_version( $version ); ?>"> 
-					<span class="fx-upmb-desc"><?php _ex( 'Latest theme version.', 'themes', 'fx-updater' ); ?></span>
-				</p>
-			</div><!-- .fx-upmb-field-content -->
-		</div><!-- .fx-upmb-field.fx-upmb-version-->
 
 	</div><!-- .fx-upmb-form -->
 

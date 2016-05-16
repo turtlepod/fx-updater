@@ -34,7 +34,6 @@ function fx_updater_plugin_custom_columns( $column, $post_id ){
 		case 'updater_info' :
 			/* Vars */
 			$status = '<span class="up-status-active">' . _x( 'Active', 'plugins', 'fx-updater' ) . '</span>';
-			$group = '<span class="group-status-active">' . _x( 'Active', 'plugins', 'fx-updater' ) . '</span>';
 			$version = get_post_meta( $post_id, 'version', true );
 			if( !$version ){
 				$status = '<span class="up-status-inactive">' . _x( 'Not Active', 'plugins', 'fx-updater' ) . '</span>';
@@ -42,13 +41,12 @@ function fx_updater_plugin_custom_columns( $column, $post_id ){
 			}
 			$package = get_post_meta( $post_id, 'download_link', true );
 			if( !$package ){
-				$status = '<span class="up-status-inactive">' . _x( 'Not Active', 'plugins', 'fx-updater' ) . '</span>';
 				$package = 'N/A';
+				$status = '<span class="up-status-inactive">' . _x( 'Not Active', 'plugins', 'fx-updater' ) . '</span>';
 			}
 			else{
 				$package = '<a href="' . esc_url( $package ) . '">' . _x( 'Download ZIP', 'plugins', 'fx-updater' ) . '</a>';
 			}
-			$slug = get_post_field( 'post_name', get_post( $post_id ) );
 			$plugin_id = get_post_meta( $post_id, 'id', true );
 			if( !$plugin_id ){
 				$plugin_id = 'N/A';
@@ -58,6 +56,15 @@ function fx_updater_plugin_custom_columns( $column, $post_id ){
 			if( 'publish' !== $post_status ){
 				$status = '<span class="up-status-inactive">' . _x( 'Not Active', 'plugins', 'fx-updater' ) . '</span>';
 			}
+			$wp = 'N/A';
+			$wp_requires = get_post_meta( $post_id, 'requires', true );
+			$wp_tested = get_post_meta( $post_id, 'tested', true );
+			if( $wp_requires && $wp_tested ){
+				$wp = $wp_requires . " - " . $wp_tested; 
+			}
+			elseif( $wp_tested ){
+				$wp = $wp_tested;
+			}
 			?>
 			<div class="updater-info">
 				<p>
@@ -65,11 +72,11 @@ function fx_updater_plugin_custom_columns( $column, $post_id ){
 					<?php _ex( 'Status', 'plugins', 'fx-updater' ); ?>: <strong><?php echo $status; ?></strong>
 				</p>
 				<p>
-					<span class="dashicons dashicons-index-card"></span>
-					<?php _ex( 'Group Update', 'plugins', 'fx-updater' ); ?>: <strong><?php echo $group; ?></strong>
+					<span class="dashicons dashicons-admin-plugins"></span>
+					<?php _ex( 'Plugin ID', 'plugins', 'fx-updater' ); ?>: <strong><?php echo $plugin_id; ?></strong>
 				</p>
 				<p>
-					<span class="dashicons dashicons-admin-plugins"></span>
+					<span class="dashicons dashicons-tag"></span>
 					<?php _ex( 'Version', 'plugins', 'fx-updater' ); ?>: <strong><?php echo $version; ?></strong>
 				</p>
 				<p>
@@ -77,12 +84,8 @@ function fx_updater_plugin_custom_columns( $column, $post_id ){
 					<?php _ex( 'Package', 'plugins', 'fx-updater' ); ?>: <strong><?php echo $package; ?></strong>
 				</p>
 				<p>
-					<span class="dashicons dashicons-edit"></span>
-					<?php _ex( 'Slug', 'plugins', 'fx-updater' ); ?>: <strong><?php echo $slug; ?></strong>
-				</p>
-				<p>
-					<span class="dashicons dashicons-media-code"></span>
-					<?php _ex( 'Plugin File', 'plugins', 'fx-updater' ); ?>: <strong><?php echo $plugin_id; ?></strong>
+					<span class="dashicons dashicons-wordpress"></span>
+					<?php _ex( 'WP Version', 'plugins', 'fx-updater' ); ?>: <strong><?php echo $wp; ?></strong>
 				</p>
 			</div>
 			<?php

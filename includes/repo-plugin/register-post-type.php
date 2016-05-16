@@ -78,6 +78,7 @@ function fx_updater_plugin_repo_register_post_type() {
 	);
 
 	/* REGISTER "plugin_repo" POST TYPE */
+	$args = apply_filters( 'plugin_repo_post_type_args', $args );
 	register_post_type( 'plugin_repo', $args );
 }
 

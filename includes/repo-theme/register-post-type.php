@@ -79,6 +79,7 @@ function fx_updater_theme_register_post_type() {
 	);
 
 	/* Register "theme_repo" post type */
+	$args = apply_filters( 'theme_repo_post_type_args', $args );
 	register_post_type( 'theme_repo', $args );
 }
 

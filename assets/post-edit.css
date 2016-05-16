@@ -92,6 +92,11 @@
 	line-height: 1.5;
 	margin: 1em 0;
 }
+/* Upgrade Notice */
+#upgrade_notice{
+	width: 400px;
+	max-width: 100%;
+}
 
 /* Media Queries */
 @media screen and ( max-width: 1200px ) {

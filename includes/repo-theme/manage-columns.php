@@ -34,21 +34,19 @@ function fx_updater_theme_custom_columns( $column, $post_id ){
 		case 'updater_info' :
 			/* Vars */
 			$status = '<span class="up-status-active">' . _x( 'Active', 'themes', 'fx-updater' ) . '</span>';
-			$group = '<span class="group-status-active">' . _x( 'Active', 'themes', 'fx-updater' ) . '</span>';
 			$version = get_post_meta( $post_id, 'version', true );
 			if( !$version ){
-				$status = '<span class="up-status-inactive">' . _x( 'Not Active', 'themes', 'fx-updater' ) . '</span>';
 				$version = 'N/A';
+				$status = '<span class="up-status-inactive">' . _x( 'Not Active', 'themes', 'fx-updater' ) . '</span>';
 			}
 			$package = get_post_meta( $post_id, 'download_link', true );
 			if( !$package ){
-				$status = '<span class="up-status-inactive">' . _x( 'Not Active', 'themes', 'fx-updater' ) . '</span>';
 				$package = 'N/A';
+				$status = '<span class="up-status-inactive">' . _x( 'Not Active', 'themes', 'fx-updater' ) . '</span>';
 			}
 			else{
 				$package = '<a href="' . esc_url( $package ) . '">' . _x( 'Download ZIP', 'themes', 'fx-updater' ) . '</a>';
 			}
-			$slug = get_post_field( 'post_name', get_post( $post_id ) );
 			$theme_id = get_post_meta( $post_id, 'id', true );
 			if( !$theme_id ){
 				$theme_id = 'N/A';
@@ -65,24 +63,16 @@ function fx_updater_theme_custom_columns( $column, $post_id ){
 					<?php _ex( 'Status', 'themes', 'fx-updater' ); ?>: <strong><?php echo $status; ?></strong>
 				</p>
 				<p>
-					<span class="dashicons dashicons-index-card"></span>
-					<?php _ex( 'Group Update', 'themes', 'fx-updater' ); ?>: <strong><?php echo $group; ?></strong>
+					<span class="dashicons dashicons-admin-appearance"></span>
+					<?php _ex( 'Theme ID', 'themes', 'fx-updater' ); ?>: <strong><?php echo $theme_id; ?></strong>
 				</p>
 				<p>
-					<span class="dashicons dashicons-admin-appearance"></span>
+					<span class="dashicons dashicons-tag"></span>
 					<?php _ex( 'Version', 'themes', 'fx-updater' ); ?>: <strong><?php echo $version; ?></strong>
 				</p>
 				<p>
 					<span class="dashicons dashicons-media-archive"></span>
 					<?php _ex( 'Package', 'themes', 'fx-updater' ); ?>: <strong><?php echo $package; ?></strong>
-				</p>
-				<p>
-					<span class="dashicons dashicons-edit"></span>
-					<?php _ex( 'Slug', 'themes', 'fx-updater' ); ?>: <strong><?php echo $slug; ?></strong>
-				</p>
-				<p>
-					<span class="dashicons dashicons-category"></span>
-					<?php _ex( 'Theme Folder', 'themes', 'fx-updater' ); ?>: <strong><?php echo $theme_id; ?></strong>
 				</p>
 			</div>
 			<?php
