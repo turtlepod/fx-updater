@@ -42,7 +42,7 @@ function fx_updater_group_custom_columns( $value, $column, $term_id ){
 				</p>
 				<p>
 					<span class="dashicons dashicons-admin-plugins"></span>
-					<a href="<?php echo esc_url( $plugin_url ); ?>"><?php _ex( 'View Plugin', 'group', 'fx-updater' ); ?></a>
+					<a href="<?php echo esc_url( $plugin_url ); ?>"><?php _ex( 'View Plugins', 'group', 'fx-updater' ); ?></a>
 				</p>
 			</div>
 			<?php
