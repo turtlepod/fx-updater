@@ -13,16 +13,6 @@ add_action( 'admin_enqueue_scripts', 'fx_updater_admin_scripts' );
 function fx_updater_admin_scripts( $hook_suffix ){
 	global $post_type, $taxonomy;
 
-	/* Only in settings page */
-	//if( 'toplevel_page_fx_updater' == $hook_suffix ){
-
-		/* CSS */
-		//wp_enqueue_style( 'fx-updater-settings', FX_UPDATER_URI . 'assets/admin-settings.css', array(), FX_UPDATER_VERSION );
-
-		/* JS */
-		//wp_enqueue_script( 'fx-updater-settings', FX_UPDATER_URI. 'assets/admin-settings.js', array( 'jquery' ), FX_UPDATER_VERSION );
-	//}
-
 	/* Check post type */
 	if( 'theme_repo' == $post_type || 'plugin_repo' == $post_type || 'group_repo' == $taxonomy ){
 
