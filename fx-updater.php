@@ -55,6 +55,9 @@ require_once( FX_UPDATER_PATH . 'includes/repo-plugin/repo-plugin.php' );
 /* Load Theme Repo Functions */
 require_once( FX_UPDATER_PATH . 'includes/repo-theme/repo-theme.php' );
 
+/* Load Updater */
+require_once( FX_UPDATER_PATH . 'includes/updater.php' );
+
 
 /* Plugins Loaded
 ------------------------------------------ */

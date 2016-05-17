@@ -1,0 +1,592 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: f(x) Updater\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-05-17 09:04+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: dave <david.warna@gmail.com>\n"
+"Language-Team: David Chandra P. <david@genbumedia.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _e;__;esc_attr_e;esc_attr__;esc_html_e;esc_html__;_x;"
+"_n;_x:1,2c;_n:1,2;_ex\n"
+"X-Poedit-Basepath: ..\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: fx-updater.php:105
+msgid "Get Support"
+msgstr ""
+
+#: fx-updater.php:175
+msgid "Thank you for using our plugin :)"
+msgstr ""
+
+#: includes/admin-scripts.php:47
+msgid "Upload Theme ZIP"
+msgstr ""
+
+#: includes/admin-scripts.php:48
+msgid "Insert ZIP File"
+msgstr ""
+
+#: includes/get-code/settings.php:21 includes/get-code/settings.php:33
+#: includes/get-code/settings.php:34
+msgctxt "settings"
+msgid "Get Code"
+msgstr ""
+
+#: includes/get-code/settings.php:22
+msgctxt "settings"
+msgid "f(x) Updater"
+msgstr ""
+
+#: includes/get-code/settings.php:52
+msgid "f(x) Updater"
+msgstr ""
+
+#: includes/repo-group/manage-columns.php:18
+msgctxt "group"
+msgid "Items"
+msgstr ""
+
+#: includes/repo-group/manage-columns.php:37
+#, php-format
+msgctxt "group"
+msgid "%d Items"
+msgstr ""
+
+#: includes/repo-group/manage-columns.php:41
+msgid "View Themes"
+msgstr ""
+
+#: includes/repo-group/manage-columns.php:45
+msgid "View Plugins"
+msgstr ""
+
+#: includes/repo-group/register-taxonomy.php:38
+msgctxt "group"
+msgid "Repo Groups"
+msgstr ""
+
+#: includes/repo-group/register-taxonomy.php:39
+msgctxt "group"
+msgid "Repo Group"
+msgstr ""
+
+#: includes/repo-group/register-taxonomy.php:40
+#: includes/repo-group/register-taxonomy.php:41
+msgctxt "group"
+msgid "Groups"
+msgstr ""
+
+#: includes/repo-group/register-taxonomy.php:42
+msgctxt "group"
+msgid "Search Groups"
+msgstr ""
+
+#: includes/repo-group/register-taxonomy.php:43
+msgctxt "group"
+msgid "Popular Groups"
+msgstr ""
+
+#: includes/repo-group/register-taxonomy.php:44
+msgctxt "group"
+msgid "All Groups"
+msgstr ""
+
+#: includes/repo-group/register-taxonomy.php:45
+msgctxt "group"
+msgid "Edit Group"
+msgstr ""
+
+#: includes/repo-group/register-taxonomy.php:46
+msgctxt "group"
+msgid "View Group"
+msgstr ""
+
+#: includes/repo-group/register-taxonomy.php:47
+msgctxt "group"
+msgid "Update Group"
+msgstr ""
+
+#: includes/repo-group/register-taxonomy.php:48
+msgctxt "group"
+msgid "Add New Group"
+msgstr ""
+
+#: includes/repo-group/register-taxonomy.php:49
+msgctxt "group"
+msgid "New Group Name"
+msgstr ""
+
+#: includes/repo-group/register-taxonomy.php:50
+msgctxt "group"
+msgid "Separate groups with commas"
+msgstr ""
+
+#: includes/repo-group/register-taxonomy.php:51
+msgctxt "group"
+msgid "Add or remove groups"
+msgstr ""
+
+#: includes/repo-group/register-taxonomy.php:52
+msgctxt "group"
+msgid "Choose from the most used groups"
+msgstr ""
+
+#: includes/repo-plugin/manage-columns.php:21
+#: includes/repo-plugin/register-post-type.php:76
+msgctxt "plugins"
+msgid "Plugins"
+msgstr ""
+
+#: includes/repo-plugin/manage-columns.php:22
+#: includes/repo-theme/manage-columns.php:21
+#: includes/repo-theme/manage-columns.php:23
+msgctxt "plugins"
+msgid "Info"
+msgstr ""
+
+#: includes/repo-plugin/manage-columns.php:36
+msgctxt "plugins"
+msgid "Active"
+msgstr ""
+
+#: includes/repo-plugin/manage-columns.php:39
+#: includes/repo-plugin/manage-columns.php:45
+#: includes/repo-plugin/manage-columns.php:53
+#: includes/repo-plugin/manage-columns.php:57
+msgctxt "plugins"
+msgid "Not Active"
+msgstr ""
+
+#: includes/repo-plugin/manage-columns.php:48
+msgctxt "plugins"
+msgid "Download ZIP"
+msgstr ""
+
+#: includes/repo-plugin/manage-columns.php:72
+#: includes/repo-theme/manage-columns.php:63
+msgid "Status"
+msgstr ""
+
+#: includes/repo-plugin/manage-columns.php:76
+#: includes/repo-plugin/meta-box-data.php:75
+msgid "Plugin ID"
+msgstr ""
+
+#: includes/repo-plugin/manage-columns.php:80
+#: includes/repo-plugin/meta-box-data.php:91
+#: includes/repo-theme/manage-columns.php:71
+#: includes/repo-theme/meta-box-data.php:73
+msgid "Version"
+msgstr ""
+
+#: includes/repo-plugin/manage-columns.php:84
+#: includes/repo-theme/manage-columns.php:75
+msgid "Package"
+msgstr ""
+
+#: includes/repo-plugin/manage-columns.php:88
+#: includes/repo-plugin/meta-box-data.php:155
+msgid "WP Version"
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:19
+msgctxt "plugins"
+msgid "Plugin Data"
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:83
+msgid "Your plugin file (required)."
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:97
+msgid "Latest plugin version (required)."
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:105
+msgid "Plugin ZIP"
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:114
+#: includes/repo-theme/meta-box-data.php:96
+msgid "Upload"
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:115
+#: includes/repo-theme/meta-box-data.php:97
+msgid "Remove"
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:118
+msgid "Input plugin ZIP URL or upload it."
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:126
+msgid "Release Date"
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:132
+msgid "01-Jan"
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:133
+msgid "02-Feb"
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:134
+msgid "03-Mar"
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:135
+msgid "04-Apr"
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:136
+msgid "05-May"
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:137
+msgid "06-Jun"
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:138
+msgid "07-Jul"
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:139
+msgid "08-Aug"
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:140
+msgid "09-Sep"
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:141
+msgid "10-Oct"
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:142
+msgid "11-Nov"
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:143
+msgid "12-Dec"
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:148
+msgid "Last updated date. (Month, Date, Year)"
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:161
+msgid "Minimum/Required WordPress version."
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:165
+msgid "Up to/Tested WordPress version."
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:173
+msgid "Changelog"
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:178
+msgid "Your plugin changelog here..."
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:181
+msgid "Add changelog using markdown or HTML."
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:189
+msgid "Upgrade Notice"
+msgstr ""
+
+#: includes/repo-plugin/meta-box-data.php:197
+msgid "Upgrade Notice for this version. No HTML allowed."
+msgstr ""
+
+#: includes/repo-plugin/register-post-type.php:65
+msgctxt "plugins"
+msgid "Plugins Updater"
+msgstr ""
+
+#: includes/repo-plugin/register-post-type.php:66
+msgctxt "plugins"
+msgid "Plugin Repo"
+msgstr ""
+
+#: includes/repo-plugin/register-post-type.php:67
+msgctxt "plugins"
+msgid "Add New"
+msgstr ""
+
+#: includes/repo-plugin/register-post-type.php:68
+msgctxt "plugins"
+msgid "Add New Plugin Repo"
+msgstr ""
+
+#: includes/repo-plugin/register-post-type.php:69
+msgctxt "plugins"
+msgid "Edit Plugin Repo"
+msgstr ""
+
+#: includes/repo-plugin/register-post-type.php:70
+msgctxt "plugins"
+msgid "New Plugin Repo"
+msgstr ""
+
+#: includes/repo-plugin/register-post-type.php:71
+msgctxt "plugins"
+msgid "All Plugins"
+msgstr ""
+
+#: includes/repo-plugin/register-post-type.php:72
+msgctxt "plugins"
+msgid "View Plugin"
+msgstr ""
+
+#: includes/repo-plugin/register-post-type.php:73
+msgctxt "plugins"
+msgid "Search Plugin"
+msgstr ""
+
+#: includes/repo-plugin/register-post-type.php:74
+msgctxt "plugins"
+msgid "No Plugin found"
+msgstr ""
+
+#: includes/repo-plugin/register-post-type.php:75
+msgctxt "plugins"
+msgid "No Plugin found in Trash"
+msgstr ""
+
+#: includes/repo-plugin/register-post-type.php:138
+msgctxt "plugins"
+msgid "Plugin Name"
+msgstr ""
+
+#: includes/repo-plugin/register-post-type.php:158
+#: includes/repo-plugin/register-post-type.php:161
+msgctxt "plugins"
+msgid "Plugin updated."
+msgstr ""
+
+#: includes/repo-plugin/register-post-type.php:159
+msgctxt "plugins"
+msgid "Plugin field updated."
+msgstr ""
+
+#: includes/repo-plugin/register-post-type.php:160
+msgctxt "plugins"
+msgid "Plugin field deleted."
+msgstr ""
+
+#: includes/repo-plugin/register-post-type.php:163
+#, php-format
+msgctxt "plugins"
+msgid "Plugin restored to revision from %s"
+msgstr ""
+
+#: includes/repo-plugin/register-post-type.php:164
+msgctxt "plugins"
+msgid "Plugin published."
+msgstr ""
+
+#: includes/repo-plugin/register-post-type.php:165
+msgctxt "plugins"
+msgid "Plugin saved."
+msgstr ""
+
+#: includes/repo-plugin/register-post-type.php:166
+msgctxt "plugins"
+msgid "Plugin submitted."
+msgstr ""
+
+#: includes/repo-plugin/register-post-type.php:167
+#, php-format
+msgctxt "plugins"
+msgid "Plugin scheduled for: <strong>%1$s</strong>."
+msgstr ""
+
+#: includes/repo-plugin/register-post-type.php:169
+msgctxt "plugins"
+msgid "M j, Y @ H:i"
+msgstr ""
+
+#: includes/repo-plugin/register-post-type.php:170
+msgctxt "plugins"
+msgid "Plugin draft updated."
+msgstr ""
+
+#: includes/repo-theme/manage-columns.php:20
+msgctxt "plugins"
+msgid "Themes"
+msgstr ""
+
+#: includes/repo-theme/manage-columns.php:36
+msgctxt "themes"
+msgid "Active"
+msgstr ""
+
+#: includes/repo-theme/manage-columns.php:40
+#: includes/repo-theme/manage-columns.php:45
+#: includes/repo-theme/manage-columns.php:53
+#: includes/repo-theme/manage-columns.php:57
+msgctxt "themes"
+msgid "Not Active"
+msgstr ""
+
+#: includes/repo-theme/manage-columns.php:48
+msgctxt "themes"
+msgid "Download ZIP"
+msgstr ""
+
+#: includes/repo-theme/manage-columns.php:67
+#: includes/repo-theme/meta-box-data.php:57
+msgid "Theme ID"
+msgstr ""
+
+#: includes/repo-theme/meta-box-data.php:19
+msgctxt "themes"
+msgid "Theme Data"
+msgstr ""
+
+#: includes/repo-theme/meta-box-data.php:65
+msgid "Your theme folder (required)."
+msgstr ""
+
+#: includes/repo-theme/meta-box-data.php:79
+msgid "Latest theme version (required)."
+msgstr ""
+
+#: includes/repo-theme/meta-box-data.php:87
+msgid "Theme ZIP"
+msgstr ""
+
+#: includes/repo-theme/meta-box-data.php:100
+msgid "Input theme ZIP URL or upload it."
+msgstr ""
+
+#: includes/repo-theme/register-post-type.php:66
+msgctxt "themes"
+msgid "Themes Repository"
+msgstr ""
+
+#: includes/repo-theme/register-post-type.php:67
+msgctxt "themes"
+msgid "Theme"
+msgstr ""
+
+#: includes/repo-theme/register-post-type.php:68
+msgctxt "themes"
+msgid "Add New"
+msgstr ""
+
+#: includes/repo-theme/register-post-type.php:69
+msgctxt "themes"
+msgid "Add New Theme Repo"
+msgstr ""
+
+#: includes/repo-theme/register-post-type.php:70
+msgctxt "themes"
+msgid "Edit Theme"
+msgstr ""
+
+#: includes/repo-theme/register-post-type.php:71
+msgctxt "themes"
+msgid "New Theme"
+msgstr ""
+
+#: includes/repo-theme/register-post-type.php:72
+msgctxt "themes"
+msgid "All Themes"
+msgstr ""
+
+#: includes/repo-theme/register-post-type.php:73
+msgctxt "themes"
+msgid "View Theme"
+msgstr ""
+
+#: includes/repo-theme/register-post-type.php:74
+msgctxt "themes"
+msgid "Search Theme"
+msgstr ""
+
+#: includes/repo-theme/register-post-type.php:75
+msgctxt "themes"
+msgid "No Theme Found"
+msgstr ""
+
+#: includes/repo-theme/register-post-type.php:76
+msgctxt "themes"
+msgid "No Theme Found in Trash"
+msgstr ""
+
+#: includes/repo-theme/register-post-type.php:77
+msgctxt "themes"
+msgid "Themes"
+msgstr ""
+
+#: includes/repo-theme/register-post-type.php:136
+msgctxt "themes"
+msgid "Theme Name"
+msgstr ""
+
+#: includes/repo-theme/register-post-type.php:156
+#: includes/repo-theme/register-post-type.php:159
+msgctxt "themes"
+msgid "Theme updated."
+msgstr ""
+
+#: includes/repo-theme/register-post-type.php:157
+msgctxt "themes"
+msgid "Theme field updated."
+msgstr ""
+
+#: includes/repo-theme/register-post-type.php:158
+msgctxt "themes"
+msgid "Theme field deleted."
+msgstr ""
+
+#: includes/repo-theme/register-post-type.php:161
+#, php-format
+msgctxt "themes"
+msgid "Theme restored to revision from %s"
+msgstr ""
+
+#: includes/repo-theme/register-post-type.php:162
+msgctxt "themes"
+msgid "Theme published."
+msgstr ""
+
+#: includes/repo-theme/register-post-type.php:163
+msgctxt "themes"
+msgid "Theme saved."
+msgstr ""
+
+#: includes/repo-theme/register-post-type.php:164
+msgctxt "themes"
+msgid "Theme submitted."
+msgstr ""
+
+#: includes/repo-theme/register-post-type.php:165
+#, php-format
+msgctxt "themes"
+msgid "Theme scheduled for: <strong>%1$s</strong>."
+msgstr ""
+
+#: includes/repo-theme/register-post-type.php:167
+msgctxt "themes"
+msgid "M j, Y @ H:i"
+msgstr ""
+
+#: includes/repo-theme/register-post-type.php:168
+msgctxt "themes"
+msgid "Theme draft updated."
+msgstr ""

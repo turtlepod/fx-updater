@@ -49,10 +49,9 @@ function fx_updater_settings_page(){
 ?>
 	<div class="wrap">
 
-		<h1><?php _ex( 'Updater Code', 'settings', 'fx-updater' ); ?></h1>
+		<h1><?php _ex( 'f(x) Updater', 'settings', 'fx-updater' ); ?></h1>
 
 	</div><!-- wrap -->
 <?php
 }
-
 
