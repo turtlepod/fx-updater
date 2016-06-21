@@ -135,7 +135,7 @@ function fx_updater_theme_data_meta_box_save_post( $post_id, $post ){
 		return $post_id;
 	}
 
-	/* == PLUGIN ID == */
+	/* == THEME ID == */
 
 	/* Get (old) saved data */
 	$old_data = get_post_meta( $post_id, 'id', true );
