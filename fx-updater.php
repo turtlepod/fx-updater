@@ -3,7 +3,7 @@
  * Plugin Name: f(x) Updater
  * Plugin URI: http://genbumedia.com/plugins/fx-updater/
  * Description: Your own update server for WordPress themes and plugins.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: David Chandra Purnama
  * Author URI: http://shellcreeper.com/
  * License: GPLv2 or later
@@ -22,7 +22,7 @@ if ( ! defined( 'WPINC' ) ) { die; }
 ------------------------------------------ */
 
 /* Set plugin version constant. */
-define( 'FX_UPDATER_VERSION', '1.0.0' );
+define( 'FX_UPDATER_VERSION', '1.0.1' );
 
 /* Set constant path to the plugin directory. */
 define( 'FX_UPDATER_PATH', trailingslashit( plugin_dir_path(__FILE__) ) );
@@ -153,9 +153,9 @@ function fx_updater_plugin_uninstall(){
 
 	/* If the administrator role exists, remove added capabilities for the plugin. */
 	if ( !empty( $role ) ) {
-		$role->add_cap( 'manage_fx_updaters' );
-		$role->add_cap( 'create_fx_updaters' );
-		$role->add_cap( 'edit_fx_updaters' );
+		$role->remove_cap( 'manage_fx_updaters' );
+		$role->remove_cap( 'create_fx_updaters' );
+		$role->remove_cap( 'edit_fx_updaters' );
 	}
 }
 

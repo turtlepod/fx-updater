@@ -24,7 +24,7 @@ function fx_updater_create_settings_page(){
 		'fx_updater',                                       // menu slug
 		'fx_updater_settings_page',                         // callback function
 		'dashicons-update',                                 // dashicon
-		100                                                 // position
+		3                                                   // position
 	);
 
 	/* Add Submenu Page: Settings */
